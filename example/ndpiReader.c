@@ -139,6 +139,29 @@ struct port_stats {
 
 struct port_stats *srcStats = NULL, *dstStats = NULL;
 
+////////////////Richard add to statistic each IP's access protocol//////
+typedef struct proto_node{
+	//u_int32_t addr;
+	u_int8_t version; /* IP version */
+	char proto[16]; /*app level protocol*/
+	int count;
+	struct proto_node *left, *right;
+} proto_node;
+
+struct ip_stats {
+	u_int32_t addr;
+	proto_node *proto_tree;
+	u_int32_t num_flows;
+	u_int32_t num_pkts, num_bytes;
+	u_int32_t num_proto; /*number of distinct IP addresses */
+	u_int32_t cumulative_addr; /*cumulative some of IP addresses */
+	
+	UT_hash_handle hh;
+};
+
+
+struct ip_stats *srcIpStats = NULL;
+
 
 // struct to hold count of flows received by destination ports
 struct port_flow_info {
@@ -897,6 +920,185 @@ static void node_proto_guess_walker(const void *node, ndpi_VISIT which, int dept
   }
 }
 
+void walkIpProtoTree(proto_node **vrootp) {
+	proto_node **rootp = vrootp;
+	static int tmp = 0;
+	if(rootp == (proto_node **)0)
+	return 0;
+
+	if ((*rootp)->left) { //Necessary for NULL validation
+		rootp = &(*rootp)->left;
+		if (rootp != (proto_node **)0) {
+			walkIpProtoTree(rootp);
+			
+			if (rootp != (proto_node **)0) {
+				printf("\t\t%s[%d]\n", (*rootp)->proto, (*rootp)->count);
+			}
+		}
+	}
+
+	rootp = vrootp;
+	if ((*rootp)->right) {
+		rootp = &(*rootp)->right;
+		if (rootp != (proto_node **)0) {
+			walkIpProtoTree(rootp);
+			
+			if (rootp != (proto_node **)0) {
+				printf("\t\t%s[%d]\n", (*rootp)->proto, (*rootp)->count);
+			}
+		}
+	}
+	
+	
+}
+int updateIpProtoTree(char *key, u_int8_t version,
+                  proto_node **vrootp) {
+  proto_node *q;
+  proto_node **rootp = vrootp;
+
+  if(rootp == (proto_node **)0)
+    return 0;
+
+  while (*rootp != (proto_node *)0) {
+    /* Knuth's T1: */
+    if((version == (*rootp)->version) && (strcmp(key, (*rootp)->proto)) == 0) {
+      /* T2: */
+      return ++((*rootp)->count);
+    }
+
+    rootp = (strcmp(key, (*rootp)->proto) < 0) ?
+      &(*rootp)->left :		/* T3: follow left branch */
+      &(*rootp)->right;		/* T4: follow right branch */
+  }
+
+  q = (proto_node *) malloc(sizeof(proto_node));	/* T5: key not found */
+  if(q != (proto_node *)0) {	                /* make new node */
+    *rootp = q;			                /* link new node to old */
+
+    //q->addr = key;
+    q->version = version;
+    strncpy(q->proto, key, sizeof(q->proto));
+    q->count = UPDATED_TREE;
+    q->left = q->right = (proto_node *)0;
+
+	printf("add proto=%s, version=%d\n", q->proto, version);
+
+    return q->count;
+  }
+
+  return(0);
+}
+/* *********************************************** */
+
+void freeIpProtoTree(proto_node *root) {
+  if (root == NULL)
+    return;
+
+  freeIpProtoTree(root->left);
+  freeIpProtoTree(root->right);
+  free(root);
+  root = NULL;
+}
+
+static void deletesrcIpStats(struct ip_stats *stats) {
+  struct ip_stats *current_port, *tmp;
+
+  HASH_ITER(hh, stats, current_port, tmp) {
+    HASH_DEL(stats, current_port);
+    freeIpProtoTree(current_port->proto_tree);
+    free(current_port);
+  }
+}
+
+static void updateIpStats(struct ip_stats **stats, 
+			    u_int32_t addr, u_int8_t version,
+                            u_int32_t num_pkts, u_int32_t num_bytes,
+                            const char *proto) {
+
+  struct ip_stats *s = NULL;
+  int count = 0;
+  
+  //Filter, only lan
+#ifdef DEBUG
+	char addr_name[48];
+	inet_ntop(AF_INET, &(addr),  addr_name, sizeof(addr_name));
+	printf("src_ip=0x%x, %s\n", addr, addr_name);
+#endif
+
+	if (addr != 0x1600A8C0) { //主机字节序
+		return;
+	}
+	char addr_name[48];
+	inet_ntop(AF_INET, &(addr),  addr_name, sizeof(addr_name));
+	printf("src_ip=0x%x, %s, proto=%s\n", addr, addr_name, proto);
+	
+	
+  HASH_FIND_INT(*stats, &addr, s);
+  if(s == NULL) {
+	 printf("updateIpstats add one\n");
+    s = (struct ip_stats*)calloc(1, sizeof(struct ip_stats));
+    if(!s) return;
+	
+	s->num_pkts = num_pkts, s->num_bytes = num_bytes;
+	s->cumulative_addr = 1; s->num_proto = 1, s->num_flows = 1;
+	s->addr = addr;
+	
+	#if 0
+		s->port = port, s->num_pkts = num_pkts, s->num_bytes = num_bytes;
+		s->num_addr = 1, s->cumulative_addr = 1; s->num_flows = 1;
+		
+		updateTopIpAddress(addr, version, proto, 1, s->top_ip_addrs, MAX_NUM_IP_ADDRESS);
+
+		s->addr_tree = (addr_node *) malloc(sizeof(addr_node));
+		if(!s->addr_tree) {
+		  free(s);
+		  return;
+		}
+
+		s->addr_tree->addr = addr;
+		s->addr_tree->version = version;
+		strncpy(s->addr_tree->proto, proto, sizeof(s->addr_tree->proto));
+		s->addr_tree->count = 1;
+		s->addr_tree->left = NULL;
+		s->addr_tree->right = NULL;
+	#else
+		s->proto_tree = (proto_node *) malloc(sizeof(proto_node));
+		strncpy(s->proto_tree->proto, proto, sizeof(s->proto_tree->proto));
+		s->proto_tree->count = 1;
+		s->proto_tree->left = NULL;
+		s->proto_tree->right = NULL;
+	#endif
+	
+    HASH_ADD_INT(*stats, addr, s);
+  }
+  else{
+	
+	#if 0
+		count = updateIpTree(addr, version, &(*s).addr_tree, proto);
+
+		if(count == UPDATED_TREE) s->num_addr++;
+
+		if(count) {
+		  s->cumulative_addr++;
+		  updateTopIpAddress(addr, version, proto, count, s->top_ip_addrs, MAX_NUM_IP_ADDRESS);
+		}
+
+		s->num_pkts += num_pkts, s->num_bytes += num_bytes, s->num_flows++;
+	#else
+		count = updateIpProtoTree(proto, version, &(*s).proto_tree);
+		
+		if(count == UPDATED_TREE) s->num_proto++;
+		
+		if (count) {
+			s->cumulative_addr++;
+		}
+		
+		s->num_pkts += num_pkts, s->num_bytes += num_bytes, s->num_flows++;
+	#endif
+	
+  }
+}
+
 /* *********************************************** */
 
 void updateScanners(struct single_flow_info **scanners, u_int32_t saddr,
@@ -1327,6 +1529,10 @@ static void port_stats_walker(const void *node, ndpi_VISIT which, int depth, voi
 
     updatePortStats(&dstStats, dport, flow->dst_ip, flow->ip_version,
                     flow->dst2src_packets, flow->dst2src_bytes, proto);
+
+	//Richard add to statistic each ip's access log
+    updateIpStats(&srcIpStats, flow->src_ip, flow->ip_version, 
+					flow->src2dst_packets, flow->src2dst_bytes, proto);
   }
 }
 
@@ -1449,7 +1655,10 @@ static void setupDetection(u_int16_t thread_id, pcap_t * pcap_handle) {
 					   on_protocol_discovered, (void *)(uintptr_t)thread_id);
 
   // enable all protocols
-  NDPI_BITMASK_SET_ALL(all);
+  //NDPI_BITMASK_SET_ALL(all);
+  NDPI_BITMASK_RESET(all);
+  NDPI_BITMASK_ADD(all, NDPI_PROTOCOL_HTTP);
+  //NDPI_BITMASK_ADD(all, NDPI_PROTOCOL_DNS);
   ndpi_set_protocol_detection_bitmask2(ndpi_thread_info[thread_id].workflow->ndpi_struct, &all);
 
   // clear memory for results
@@ -1820,6 +2029,46 @@ void printPortStats(struct port_stats *stats) {
   }
 }
 
+void printIpStats(struct ip_stats *stats) {
+  struct ip_stats *s, *tmp;
+  char addr_name[48];
+  int i = 0, j = 0;
+
+  HASH_ITER(hh, stats, s, tmp) {
+    i++;
+    
+    inet_ntop(AF_INET, &(s->addr),  addr_name, sizeof(addr_name));
+    
+    printf("\tIP address\t%s\n", addr_name);
+    printf("\t%2d\t[%u IP address(es)/%u flows/%u pkts/%u bytes]\n",
+	   i,  s->num_proto, s->num_flows, s->num_pkts, s->num_bytes);
+
+	#if 0
+		qsort(&s->top_ip_addrs[0], MAX_NUM_IP_ADDRESS, sizeof(struct info_pair), info_pair_cmp);
+
+		for(j=0; j<MAX_NUM_IP_ADDRESS; j++) {
+		  if(s->top_ip_addrs[j].count != 0) {
+			if(s->top_ip_addrs[j].version == IPVERSION) {
+			  inet_ntop(AF_INET, &(s->top_ip_addrs[j].addr), addr_name, sizeof(addr_name));
+			} else {
+			  inet_ntop(AF_INET6, &(s->top_ip_addrs[j].addr),  addr_name, sizeof(addr_name));
+			}
+
+		printf("\t\t%-36s ~ %.2f%%\n", addr_name,
+			   ((s->top_ip_addrs[j].count) * 100.0) / s->cumulative_addr);
+		  }
+		}
+	#else
+		//walk all proto_tree
+		//printf("start walk ip proto tree\n");
+		walkIpProtoTree(&s->proto_tree);
+		//printf("end walk ip proto tree\n");
+	#endif
+    printf("\n");
+    //if(i >= 10) break;
+  }
+}
+
 
 /* *********************************************** */
 
@@ -2113,6 +2362,10 @@ static void printResults(u_int64_t tot_usec) {
     printf("\nDestination Ports Stats:\n");
     printPortStats(dstStats);
   }
+  if (verbose) {
+	  printf("\n\nEach Ip Status\n\n");
+	  printIpStats(srcIpStats);
+	}
 
   if(stats_flag) {
 #ifdef HAVE_JSON_C
@@ -2172,6 +2425,10 @@ static void printResults(u_int64_t tot_usec) {
     deletePortsStats(dstStats);
     dstStats = NULL;
   }
+  
+	if(srcIpStats) {
+		deletesrcIpStats(srcIpStats);
+	}
 }
 
 /**
