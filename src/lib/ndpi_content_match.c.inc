@@ -8379,6 +8379,8 @@ ndpi_protocol_match host_match[] = {
   { ".qq.com", NULL, NULL,                  "QQ",               NDPI_PROTOCOL_QQ, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
   { ".gtimg.com", NULL, NULL,               "QQ",               NDPI_PROTOCOL_QQ, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
   { ".yingyinglicai.com", NULL, NULL,               "YingYing",               NDPI_PROTOCOL_YINYING_APP, NDPI_PROTOCOL_CATEGORY_FINANCE, NDPI_PROTOCOL_SAFE },
+  { ".icbc.com.cn", NULL, NULL,               "ICBC",               NDPI_PROTOCOL_ICBC, NDPI_PROTOCOL_CATEGORY_FINANCE, NDPI_PROTOCOL_SAFE },
+  { ".weread.qq.com", NULL, NULL,               "WeRead",               NDPI_PROTOCOL_WEREAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
 
   { "dnscrypt.org", NULL, NULL,             "DNScrypt",         NDPI_PROTOCOL_DNSCRYPT, NDPI_PROTOCOL_CATEGORY_NETWORK, NDPI_PROTOCOL_ACCEPTABLE },
 

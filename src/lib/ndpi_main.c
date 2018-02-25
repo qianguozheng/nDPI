@@ -1155,16 +1155,29 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "PPStream", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	
+	//快手
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_KWAI_APP,
 			    no_master,
 			    no_master, "KuaiShou", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 	
+	//盈盈理财
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_YINYING_APP,
 			    no_master,
 			    no_master, "YingYing", NDPI_PROTOCOL_CATEGORY_FINANCE,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//ICBC 中国工商银行
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ICBC,
+			    no_master,
+			    no_master, "ICBC", NDPI_PROTOCOL_CATEGORY_FINANCE,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//微信阅读
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ICBC,
+			    no_master,
+			    no_master, "WeRead", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 	
@@ -5071,7 +5084,6 @@ int ndpi_match_string_subprotocol_ua(struct ndpi_detection_module_struct *ndpi_s
 
   ac_automata_reset(((AC_AUTOMATA_t*)automa->ac_automa));
 
-	printf("\n\n%s(%d): id=%d\n\n", __FUNCTION__, __LINE__, matching_protocol_id);
   return(matching_protocol_id);
 }
 
