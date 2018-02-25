@@ -8378,6 +8378,7 @@ ndpi_protocol_match host_match[] = {
 
   { ".qq.com", NULL, NULL,                  "QQ",               NDPI_PROTOCOL_QQ, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
   { ".gtimg.com", NULL, NULL,               "QQ",               NDPI_PROTOCOL_QQ, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
+  { ".yingyinglicai.com", NULL, NULL,               "YingYing",               NDPI_PROTOCOL_YINYING_APP, NDPI_PROTOCOL_CATEGORY_FINANCE, NDPI_PROTOCOL_SAFE },
 
   { "dnscrypt.org", NULL, NULL,             "DNScrypt",         NDPI_PROTOCOL_DNSCRYPT, NDPI_PROTOCOL_CATEGORY_NETWORK, NDPI_PROTOCOL_ACCEPTABLE },
 
@@ -8466,6 +8467,17 @@ ndpi_protocol_match content_match[] = {
   { "application/gnutar",           NULL, NULL, NULL,           NDPI_PROTOCOL_HTTP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_DOWNLOAD_FT, NDPI_PROTOCOL_ACCEPTABLE },
   { "application/x-compressed",     NULL, NULL, NULL,           NDPI_PROTOCOL_HTTP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_DOWNLOAD_FT, NDPI_PROTOCOL_ACCEPTABLE },
 
+  { NULL, NULL, NULL, 0 }
+};
+
+/*
+  Mime-type useragent match match
+*/
+ndpi_protocol_match useragent_match[] = {
+  { "kwai-android",                   NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "kwaiplayer",                   NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "MicroMessenger Client",                 NULL, NULL, NULL,           NDPI_PROTOCOL_WECHAT, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
   { NULL, NULL, NULL, 0 }
 };
 

@@ -288,7 +288,7 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
 
       strncpy(ua, (const char *)packet->user_agent_line.ptr, mlen);
       ua[mlen] = '\0';
-
+      
       if(strncmp(ua, "Mozilla", 7) == 0) {
 	char *parent = strchr(ua, '(');
 
@@ -439,6 +439,21 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
 #endif
 #endif
 
+	if(packet->user_agent_line.ptr != NULL && packet->user_agent_line.len != 0) {
+		if(packet->user_agent_line.len > 7) {
+		  char ua[256];
+		  u_int mlen = ndpi_min(packet->user_agent_line.len, sizeof(ua)-1);
+
+		  strncpy(ua, (const char *)packet->user_agent_line.ptr, mlen);
+		  ua[mlen] = '\0';
+
+		//printf("ua=%s\n", ua);
+		 //UserAgent
+		 ndpi_match_useragent_subprotocol(ndpi_struct, flow,
+						 (char*)ua, mlen,
+						 NDPI_PROTOCOL_HTTP);
+		}
+	}else 
   if(packet->content_line.ptr != NULL && packet->content_line.len != 0) {
     NDPI_LOG_DBG2(ndpi_struct, "Content Type line found %.*s\n",
 	     packet->content_line.len, packet->content_line.ptr);
