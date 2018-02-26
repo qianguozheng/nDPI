@@ -69,6 +69,7 @@
 
 #include "ndpi_main.h"
 #include "ndpi_util.h"
+#include "log.h"
 
 /* ***************************************************** */
 
@@ -563,8 +564,52 @@ void process_ndpi_collected_info(struct ndpi_workflow * workflow, struct ndpi_fl
   }
 }
 
+//Add by Richard
+#include      <sys/types.h> //stat()
+#include      <sys/stat.h>
+#include <errno.h>
+#include <sys/time.h>
+#include "msg.h"
+
+int sockfd = 0;
+struct sockaddr_in binder;
+#define USERANALYZER_PORT 9988
+
+typedef struct msg_header{
+	unsigned int length;
+	unsigned int type;
+} msg_header_t;
+
+void dns_log_write(char *prefix, char *str, char *mac, uint64_t time1, char *ip) {
+
+	char buf[4096]; //send_buf[512];
+	//msg_header_t *header = NULL;
+	//int msg_length = 0;
+	
+	memset(buf, 0, sizeof(buf));
+	//memset(send_buf, 0, sizeof(send_buf));
+	
+	snprintf(buf, 4096, "%s|%s|%lu|%s", mac, str, time1, ip);
+	if (strlen(buf) >= sizeof(buf)-1) {
+		LOG("BUG: need dynamic malloc buf!!!!!\n");
+	}
+	add_dns_to_maclist(buf);
+}
+void tuple_log_write(char *prefix, char *str, char *mac) {
+
+	char buf[512]; //send_buf[512];
+	//msg_header_t *header = NULL;
+	//int msg_length = 0;
+	
+	memset(buf, 0, sizeof(buf));
+	//memset(send_buf, 0, sizeof(send_buf));
+	
+	snprintf(buf, 512, "%s|%s", mac, str);
+	add_tuple_to_maclist(buf);
+}
 /* ****************************************************** */
 
+#include "dns.h"
 /**
    Function to process the packet:
    determine the flow of a packet and try to decode it
@@ -575,6 +620,7 @@ void process_ndpi_collected_info(struct ndpi_workflow * workflow, struct ndpi_fl
 static struct ndpi_proto packet_processing(struct ndpi_workflow * workflow,
 					   const u_int64_t time,
 					   u_int16_t vlan_id,
+					   const struct ndpi_ethhdr * eth,
 					   const struct ndpi_iphdr *iph,
 					   struct ndpi_ipv6hdr *iph6,
 					   u_int16_t ip_offset,
@@ -602,6 +648,24 @@ static struct ndpi_proto packet_processing(struct ndpi_workflow * workflow,
 			       &tcph, &udph, &sport, &dport,
 			       &src, &dst, &proto,
 			       &payload, &payload_len, &src_to_dst_direction);
+	char mac[18], addr_name[48];; 
+	 if(openwrt_os) {
+		//Dissect DNS query
+		memset(addr_name, 0, sizeof(addr_name));
+		memset(mac, 0, sizeof(mac));
+		
+		if (eth) {
+			snprintf(mac, sizeof(mac), "%02x%02x%02x%02x%02x%02x", 
+					eth->h_source[0], eth->h_source[1], eth->h_source[2],
+					eth->h_source[3], eth->h_source[4], eth->h_source[5]);
+		}
+		
+		if (sport == 53 && flow) {
+			if (iph) {
+				dissectDNS(payload, payload_len, iph->protocol, mac, time);
+			}
+		}
+	}
 
   if(flow != NULL) {
     workflow->stats.ip_packet_count++;
@@ -622,6 +686,18 @@ static struct ndpi_proto packet_processing(struct ndpi_workflow * workflow,
 
   /* Protocol already detected */
   if(flow->detection_completed) {
+	if(openwrt_os) {
+	  if (src_to_dst_direction){
+		//LOG("tuple enter\n");
+		char tuple[512];
+		memset(tuple, 0, sizeof(tuple));
+		snprintf(tuple, 512, "%s|%d|%u|%lu", flow->dst_name, dport, proto, time);
+		if (strlen(mac) > 0)
+			tuple_log_write("tuple.list", tuple, mac);
+		//LOG("tuple exit\n");
+	  }
+	}
+
     if(flow->check_extra_packets && ndpi_flow != NULL && ndpi_flow->check_extra_packets) {
       if(ndpi_flow->num_extra_packets_checked == 0 && ndpi_flow->max_extra_packets_to_check == 0) {
         /* Protocols can set this, but we set it here in case they didn't */
@@ -1006,7 +1082,7 @@ struct ndpi_proto ndpi_workflow_process_packet (struct ndpi_workflow * workflow,
   }
 
   /* process the packet */
-  return(packet_processing(workflow, time, vlan_id, iph, iph6,
+  return(packet_processing(workflow, time, vlan_id, ethernet, iph, iph6,
 			   ip_offset, header->caplen - ip_offset, header->caplen));
 }
 

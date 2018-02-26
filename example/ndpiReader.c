@@ -55,6 +55,8 @@
 #endif
 
 #include "ndpi_util.h"
+#include "msg.h"
+#include "log.h"
 
 /** Client parameters **/
 static char *_pcap_file[MAX_NUM_READER_THREADS]; /**< Ingress pcap file/interfaces */
@@ -924,7 +926,7 @@ void walkIpProtoTree(proto_node **vrootp) {
 	proto_node **rootp = vrootp;
 	static int tmp = 0;
 	if(rootp == (proto_node **)0)
-	return 0;
+	return ;
 
 	if ((*rootp)->left) { //Necessary for NULL validation
 		rootp = &(*rootp)->left;
@@ -951,7 +953,7 @@ void walkIpProtoTree(proto_node **vrootp) {
 	
 	
 }
-int updateIpProtoTree(char *key, u_int8_t version,
+int updateIpProtoTree(const char *key, u_int8_t version,
                   proto_node **vrootp) {
   proto_node *q;
   proto_node **rootp = vrootp;
@@ -3388,7 +3390,101 @@ static void produceBpfFilter(char *filePath) {
 
 /* *********************************************** */
 
+// Richard add at 2016-3-30
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <errno.h>
+static int setcoredump(void)
+{
+    struct rlimit limit;
+    limit.rlim_cur = RLIM_INFINITY;
+    limit.rlim_max = RLIM_INFINITY;
+    if (setrlimit(RLIMIT_CORE, &limit) != 0) {
+        printf("setrlimit() failed with %s\n", strerror(errno));
+        return -1;
+    }
 
+    if (getrlimit(RLIMIT_CORE, &limit) != 0) {
+        printf("call getrlimit error, %s", strerror(errno));
+        return -1;
+    }
+
+    printf("The soft limit for CORE after is %lu\n", limit.rlim_cur);
+    printf("The hard limit for CORE after is %lu  %lu\n", limit.rlim_max, RLIM_INFINITY);
+    
+#if 1
+	if (getrlimit(RLIMIT_NOFILE, &limit) != 0) {
+        printf("call getrlimit error, %s", strerror(errno));
+        return -1;
+    }
+    printf("The soft limit for NOFILE after is %lu\n", limit.rlim_cur);
+    printf("The hard limit for NOFILE after is %lu  %lu\n", limit.rlim_max, RLIM_INFINITY);
+
+    
+    limit.rlim_cur = limit.rlim_max;
+    limit.rlim_max = limit.rlim_max;
+    if (setrlimit(RLIMIT_NOFILE, &limit) != 0) {
+        printf("setrlimit() failed with %s\n", strerror(errno));
+        return -1;
+    }
+    
+    printf("The soft limit for RLIMIT_NOFILE after is %lu\n", limit.rlim_cur);
+    printf("The hard limit for RLIMIT_NOFILE after is %lu  %lu\n", limit.rlim_max, RLIM_INFINITY);
+#endif
+    // 测试生成coredump
+    //char *p = NULL;
+    //*p = 123;
+    return 0;
+}
+
+void create_pidfile(const char *pidfile)
+{
+	FILE  *fp = NULL ;
+	char line[32] = {'\0'};
+	int pid ;
+
+	if ((fp = fopen(pidfile, "r")) != NULL) {
+		fgets(line, sizeof (line), fp);
+		if (sscanf(line, "%d", &pid)) {
+			if (pid > 1) {
+				if (0 == kill(pid, SIGINT) ) {
+					sleep(3);
+				}
+				LOG("kill -s sigint %d old ndpiReader", pid);
+			}
+		}
+
+		fclose(fp); 
+	}
+
+	sprintf (line, "%d", getpid());
+	if ((fp = fopen(pidfile, "w")) == NULL) {
+		LOG("Can't create PID file %s!", pidfile);
+		exit(1); 
+	}
+
+	fwrite (line, strlen (line), 1, fp);
+	fclose (fp);
+}
+int openwrt_os = 0;
+int get_system_type(){
+	FILE *fp = NULL;
+	char buf[1024];
+	memset(buf, 0, sizeof(buf));
+	
+	fp = fopen("/proc/version", "r");
+	if (fp) {
+		while(fgets(buf, sizeof(buf), fp)){
+			if (strstr(buf, "OpenWrt")) {
+				return 1;
+			}
+			memset(buf, 0, sizeof(buf));
+		}
+	}
+	return 0;
+}
+
+static const char ndpiReader_pidfile[]     = "/var/run/ndpiReader.pid";
 /**
    @brief MAIN FUNCTION
 **/
@@ -3398,7 +3494,10 @@ int orginal_main(int argc, char **argv) {
 int main(int argc, char **argv) {
 #endif
   int i;
-
+  
+  openwrt_os = get_system_type();
+  if(openwrt_os) LOG_INIT("/tmp/ndpiReader.log");
+	
   automataUnitTest();
 
   ndpi_info_mod = ndpi_init_detection_module();
@@ -3428,6 +3527,19 @@ int main(int argc, char **argv) {
 
   signal(SIGINT, sigproc);
 
+//Only one process permitted executed
+	if(openwrt_os) {
+		create_pidfile(ndpiReader_pidfile);
+		setcoredump();
+		init_struct_store();
+		
+		pthread_t dump_tid;
+		if (pthread_create(&dump_tid, NULL, (void *)dump_maclist_to_disk, NULL)) {
+			LOG("start dump thread failed--\n");
+			exit(1);
+		}
+		pthread_detach(dump_tid);
+	}
   for(i=0; i<num_loops; i++)
     test_lib();
 
@@ -3435,6 +3547,9 @@ int main(int argc, char **argv) {
   if(results_file)  fclose(results_file);
   if(extcap_dumper) pcap_dump_close(extcap_dumper);
   if(ndpi_info_mod) ndpi_exit_detection_module(ndpi_info_mod);
+
+//Close logfile fd
+	if(openwrt_os) LOG_CLOSE();
 
   return 0;
 }
