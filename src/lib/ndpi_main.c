@@ -706,6 +706,14 @@ int ndpi_add_useragent_subprotocol(struct ndpi_detection_module_struct *ndpi_str
 			       value, protocol_id, breed));
 }
 
+int ndpi_add_uri_subprotocol(struct ndpi_detection_module_struct *ndpi_struct,
+				 char *value, int protocol_id,
+				 ndpi_protocol_breed_t breed)
+{
+  return(ndpi_string_to_automa(ndpi_struct, &ndpi_struct->uri_automa,
+			       value, protocol_id, breed));
+}
+
 /* ****************************************************** */
 
 /*
@@ -847,6 +855,11 @@ static void init_string_based_protocols(struct ndpi_detection_module_struct *ndp
 				 useragent_match[i].protocol_id,
 				 useragent_match[i].protocol_breed);
 
+  for(i=0; uri_match[i].string_to_match != NULL; i++)
+    ndpi_add_uri_subprotocol(ndpi_mod, uri_match[i].string_to_match,
+				 uri_match[i].protocol_id,
+				 uri_match[i].protocol_breed);
+				 
   for(i=0; ndpi_en_bigrams[i] != NULL; i++)
     ndpi_string_to_automa(ndpi_mod, &ndpi_mod->bigrams_automa,
 			  (char*)ndpi_en_bigrams[i],
@@ -1175,12 +1188,97 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 	//微信阅读
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ICBC,
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_WEREAD,
 			    no_master,
 			    no_master, "WeRead", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	
+	//支付宝
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ALIPAY,
+			    no_master,
+			    no_master, "AliPay", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//淘宝/天猫
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TAOBAO,
+			    no_master,
+			    no_master, "Taobao", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+
+	//得到
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_DEDAO,
+			    no_master,
+			    no_master, "DeDao", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//知乎
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ZHIHU,
+			    no_master,
+			    no_master, "Zhihu", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//京东
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_JD,
+			    no_master,
+			    no_master, "JD", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//58同城
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_58,
+			    no_master,
+			    no_master, "58", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//唯品会
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_VIP,
+			    no_master,
+			    no_master, "VIP", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//虎扑
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HUPU,
+			    no_master,
+			    no_master, "HUPU", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//口碑
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_KOUBEI,
+			    no_master,
+			    no_master, "KouBei", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//斗地主
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_DOUDIZHU,
+			    no_master,
+			    no_master, "DouDiZHu", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//今日头条
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TOUTIAO,
+			    no_master,
+			    no_master, "TouTiao", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//懂球帝
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_DONGQIUDI,
+			    no_master,
+			    no_master, "DongQiuDi", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//App下载
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_APP_DOWNLOAD,
+			    no_master,
+			    no_master, "APP_Download", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//腾讯视频 (Host识别)
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_QQ_VIDEO,
+			    no_master,
+			    no_master, "QQ(Video)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+			    
     ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_ZATTOO,
 			    no_master,
 			    no_master, "Zattoo", NDPI_PROTOCOL_CATEGORY_MEDIA,
@@ -2075,6 +2173,8 @@ struct ndpi_detection_module_struct *ndpi_init_detection_module(void) {
   ndpi_str->content_automa.ac_automa = ac_automata_init(ac_match_handler);
   //useragent
   ndpi_str->useragent_automa.ac_automa = ac_automata_init(ac_match_handler);
+  ndpi_str->uri_automa.ac_automa = ac_automata_init(ac_match_handler);
+  
   ndpi_str->bigrams_automa.ac_automa = ac_automata_init(ac_match_handler);
   ndpi_str->impossible_bigrams_automa.ac_automa = ac_automata_init(ac_match_handler);
 
@@ -2188,6 +2288,9 @@ void ndpi_exit_detection_module(struct ndpi_detection_module_struct *ndpi_struct
     //Release user agent
     if(ndpi_struct->useragent_automa.ac_automa != NULL)
       ac_automata_release((AC_AUTOMATA_t*)ndpi_struct->useragent_automa.ac_automa);
+    
+    if(ndpi_struct->uri_automa.ac_automa != NULL)
+      ac_automata_release((AC_AUTOMATA_t*)ndpi_struct->uri_automa.ac_automa);
 
     if(ndpi_struct->bigrams_automa.ac_automa != NULL)
       ac_automata_release((AC_AUTOMATA_t*)ndpi_struct->bigrams_automa.ac_automa);
@@ -5087,6 +5190,28 @@ int ndpi_match_string_subprotocol_ua(struct ndpi_detection_module_struct *ndpi_s
   return(matching_protocol_id);
 }
 
+int ndpi_match_string_subprotocol_uri(struct ndpi_detection_module_struct *ndpi_struct,
+				  char *string_to_match, u_int string_to_match_len,
+				  u_int8_t is_host_match) {
+  int matching_protocol_id = NDPI_PROTOCOL_UNKNOWN;
+  AC_TEXT_t ac_input_text;
+  
+  ndpi_automa *automa = &ndpi_struct->uri_automa;
+  if((automa->ac_automa == NULL) || (string_to_match_len == 0)) return(NDPI_PROTOCOL_UNKNOWN);
+  if(!automa->ac_automa_finalized) {
+    ac_automata_finalize((AC_AUTOMATA_t*)automa->ac_automa);
+    automa->ac_automa_finalized = 1;
+  }
+
+  ac_input_text.astring = string_to_match, ac_input_text.length = string_to_match_len;
+  ac_automata_search(((AC_AUTOMATA_t*)automa->ac_automa), &ac_input_text, (void*)&matching_protocol_id);
+
+  ac_automata_reset(((AC_AUTOMATA_t*)automa->ac_automa));
+
+  return(matching_protocol_id);
+}
+
+
 
 
 /* ****************************************************** */
@@ -5120,6 +5245,23 @@ static int ndpi_automa_match_string_subprotocol(struct ndpi_detection_module_str
 	   m, ndpi_struct->proto_defaults[matching_protocol_id].protoName);
   }
 #endif
+	if (0 == is_host_match) {
+		//...
+		if (matching_protocol_id == NDPI_PROTOCOL_HTTP_DOWNLOAD) {
+			flow->app_download_stage += 1;
+			
+			if (2 == flow->app_download_stage) {
+				packet->detected_protocol_stack[1] = master_protocol_id,
+				packet->detected_protocol_stack[0] = NDPI_PROTOCOL_APP_DOWNLOAD;
+				//printf("app download ####\n");
+
+				flow->detected_protocol_stack[0] = packet->detected_protocol_stack[0],
+				flow->detected_protocol_stack[1] = packet->detected_protocol_stack[1];
+				return (packet->detected_protocol_stack[0]);
+			}
+		}
+	}
+	
   if(matching_protocol_id != NDPI_PROTOCOL_UNKNOWN) {
     /* Move the protocol on slot 0 down one position */
     packet->detected_protocol_stack[1] = master_protocol_id,
@@ -5194,6 +5336,7 @@ int ndpi_match_useragent_subprotocol(struct ndpi_detection_module_struct *ndpi_s
 				   struct ndpi_flow_struct *flow,
 				   char *string_to_match, u_int string_to_match_len,
 				   u_int16_t master_protocol_id) {
+	//printf("string_to_match=%s\n", string_to_match);
   return(ndpi_automa_match_string_subprotocol(ndpi_struct, flow,
 					      string_to_match, string_to_match_len,
 					      master_protocol_id, 2));

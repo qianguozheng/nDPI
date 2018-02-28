@@ -884,6 +884,7 @@ struct ndpi_detection_module_struct {
     content_automa,                            /* Used for HTTP subprotocol_detection */
     subprotocol_automa,                        /* Used for HTTP subprotocol_detection */
     useragent_automa,                          /* Used for HTTP subprotocol_detection */
+    uri_automa,                                /* Used for HTTP subprotocol_detection */
     bigrams_automa, impossible_bigrams_automa; /* TOR */
 
   /* IP-based protocol detection */
@@ -1043,7 +1044,9 @@ struct ndpi_flow_struct {
 
   /* protocols which have marked a connection as this connection cannot be protocol XXX, multiple u_int64_t */
   NDPI_PROTOCOL_BITMASK excluded_protocol_bitmask;
-
+  // App Download Stage @Richard
+  u_int8_t app_download_stage;
+  
   u_int8_t num_stun_udp_pkts;
 
 #ifdef NDPI_PROTOCOL_REDIS

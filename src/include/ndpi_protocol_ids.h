@@ -282,9 +282,24 @@
 #define NDPI_PROTOCOL_YINYING_APP           241 /* yingying finace */
 #define NDPI_PROTOCOL_ICBC                  242 /* ICBC finace */
 #define NDPI_PROTOCOL_WEREAD                243 /* WeRead */
+#define NDPI_PROTOCOL_ALIPAY                244 /* AliPay */
+#define NDPI_PROTOCOL_TAOBAO                245 /* 淘宝 */
+#define NDPI_PROTOCOL_DEDAO                 246 /* 得到 */
+#define NDPI_PROTOCOL_ZHIHU                 247 /* 知乎 */
+#define NDPI_PROTOCOL_JD                    248 /* 京东 */
+#define NDPI_PROTOCOL_58                    249 /* 58同城 */
+#define NDPI_PROTOCOL_VIP                   250 /* 唯品会 */
+#define NDPI_PROTOCOL_HUPU                  251 /* 虎扑体育 */
+#define NDPI_PROTOCOL_KOUBEI                252 /* 口碑 */
+#define NDPI_PROTOCOL_DOUDIZHU              253 /* 斗地主 */
+#define NDPI_PROTOCOL_TOUTIAO               254 /* 今日头条 */
+#define NDPI_PROTOCOL_DONGQIUDI             255 /* 懂球帝 */
+#define NDPI_PROTOCOL_APP_DOWNLOAD          256 /* APP下载 */
+#define NDPI_PROTOCOL_QQ_VIDEO              257 /* Tencent Video */
+
 
 /* UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE */
-#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_WEREAD
+#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_QQ_VIDEO
 
 #define NDPI_MAX_SUPPORTED_PROTOCOLS                (NDPI_LAST_IMPLEMENTED_PROTOCOL + 1)
 #define NDPI_MAX_NUM_CUSTOM_PROTOCOLS               (NDPI_NUM_BITS-NDPI_LAST_IMPLEMENTED_PROTOCOL)

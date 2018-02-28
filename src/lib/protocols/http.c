@@ -403,8 +403,12 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
       if(packet->detected_protocol_stack[0] != NDPI_PROTOCOL_HTTP) {
 	NDPI_LOG_INFO(ndpi_struct, "found HTTP/%s\n", 
 		    ndpi_get_proto_name(ndpi_struct, packet->detected_protocol_stack[0]));
-	ndpi_int_http_add_connection(ndpi_struct, flow, packet->detected_protocol_stack[0]);
-	return; /* We have identified a sub-protocol so we're done */
+		    
+		// If QQ protocol have download, it will be reguarded as QQ not APP_DOWNLOAD.
+		//goto CHECK_UA_MIME;
+		//Comment by Richard, to check UA and MIME type
+	    ndpi_int_http_add_connection(ndpi_struct, flow, packet->detected_protocol_stack[0]);
+	    return; /* We have identified a sub-protocol so we're done */
       }
     }
   }
@@ -439,6 +443,7 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
 #endif
 #endif
 
+CHECK_UA_MIME:
 	if(packet->user_agent_line.ptr != NULL && packet->user_agent_line.len != 0) {
 		if(packet->user_agent_line.len > 7) {
 		  char ua[256];
@@ -447,13 +452,22 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
 		  strncpy(ua, (const char *)packet->user_agent_line.ptr, mlen);
 		  ua[mlen] = '\0';
 
-		//printf("ua=%s\n", ua);
+		printf("ua=%s\n", ua);
 		 //UserAgent
 		 ndpi_match_useragent_subprotocol(ndpi_struct, flow,
 						 (char*)ua, mlen,
 						 NDPI_PROTOCOL_HTTP);
+						 
+			//if (NDPI_PROTOCOL_APP_DOWNLOAD == flow->detected_protocol_stack[0]) {
+				
+				//char url[512];
+				//mlen = ndpi_min(packet->http_url_name.len, sizeof(url)-1);
+				//strncpy(url, (const char *)packet->http_url_name.ptr, mlen);
+				//url[mlen] = '\0';
+				//printf("url=%s\n", url);
+			//}
 		}
-	}else 
+	}
   if(packet->content_line.ptr != NULL && packet->content_line.len != 0) {
     NDPI_LOG_DBG2(ndpi_struct, "Content Type line found %.*s\n",
 	     packet->content_line.len, packet->content_line.ptr);
@@ -658,6 +672,18 @@ static void ndpi_check_http_tcp(struct ndpi_detection_module_struct *ndpi_struct
 
       packet->http_url_name.ptr = &packet->payload[filename_start];
       packet->http_url_name.len = packet->line[0].len - (filename_start + 9);
+      
+		//char url[512];
+		//int mlen = ndpi_min(packet->http_url_name.len, sizeof(url)-1);
+		//strncpy(url, (const char *)packet->http_url_name.ptr, mlen);
+		//url[mlen] = '\0';
+		//printf("parsed url=%s\n", url);
+      //TODO： 查找存在 ".apk" 字符,设置标记
+      if (NDPI_PROTOCOL_UNKNOWN != ndpi_match_string_subprotocol_uri(ndpi_struct, packet->http_url_name.ptr, packet->http_url_name.len, 0)){
+		  flow->app_download_stage = 1;
+		  //printf("stage = 1\n");
+		}
+      
 
       packet->http_method.ptr = packet->line[0].ptr;
       packet->http_method.len = filename_start - 1;
