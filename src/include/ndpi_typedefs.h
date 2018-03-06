@@ -1039,6 +1039,14 @@ struct ndpi_flow_struct {
       char class_ident[48];
     } dhcp;
   } protos;
+  
+	//Add by richard, refer to lijg
+   struct {
+    u_int8_t ensured_pkts;
+    u_int8_t unsured_pkts;
+    u_int8_t session_stage;
+    u_int8_t pad1;
+  } common;
 
   /*** ALL protocol specific 64 bit variables here ***/
 

@@ -452,7 +452,7 @@ CHECK_UA_MIME:
 		  strncpy(ua, (const char *)packet->user_agent_line.ptr, mlen);
 		  ua[mlen] = '\0';
 
-		printf("ua=%s\n", ua);
+		//printf("ua=%s\n", ua);
 		 //UserAgent
 		 ndpi_match_useragent_subprotocol(ndpi_struct, flow,
 						 (char*)ua, mlen,

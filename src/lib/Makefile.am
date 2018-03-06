@@ -107,6 +107,7 @@ libndpi_la_SOURCES = ndpi_content_match.c.inc \
 		     protocols/ppstream.c \
 		     protocols/pptp.c \
 		     protocols/qq.c \
+		     protocols/qq_huanle.c \
 		     protocols/quic.c \
 		     protocols/radius.c \
 		     protocols/rdp.c \
@@ -166,6 +167,8 @@ libndpi_la_SOURCES = ndpi_content_match.c.inc \
 		     protocols/smpp.c \
 		     protocols/tinc.c \
 		     protocols/someip.c \
+		     protocols/netease_hyxd.c \
+		     protocols/wzry_pvp.c \
 		     third_party/include/actypes.h \
 		     third_party/include/ahocorasick.h \
 		     third_party/include/ndpi_patricia.h \

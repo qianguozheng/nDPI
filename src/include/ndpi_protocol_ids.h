@@ -278,11 +278,11 @@
 #define NDPI_PROTOCOL_APPLE_PUSH            238
 #define NDPI_PROTOCOL_GOOGLE_SERVICES       239
 
-#define NDPI_PROTOCOL_KWAI_APP              240 /* kuai shou */
-#define NDPI_PROTOCOL_YINYING_APP           241 /* yingying finace */
-#define NDPI_PROTOCOL_ICBC                  242 /* ICBC finace */
-#define NDPI_PROTOCOL_WEREAD                243 /* WeRead */
-#define NDPI_PROTOCOL_ALIPAY                244 /* AliPay */
+#define NDPI_PROTOCOL_KWAI_APP              240 /* 快手android */
+#define NDPI_PROTOCOL_YINYING_APP           241 /* 盈盈理财 */
+#define NDPI_PROTOCOL_ICBC                  242 /* ICBC */
+#define NDPI_PROTOCOL_WEREAD                243 /* 微信阅读 */
+#define NDPI_PROTOCOL_ALIPAY                244 /* AliPay 应该和淘宝合并 */
 #define NDPI_PROTOCOL_TAOBAO                245 /* 淘宝 */
 #define NDPI_PROTOCOL_DEDAO                 246 /* 得到 */
 #define NDPI_PROTOCOL_ZHIHU                 247 /* 知乎 */
@@ -296,10 +296,25 @@
 #define NDPI_PROTOCOL_DONGQIUDI             255 /* 懂球帝 */
 #define NDPI_PROTOCOL_APP_DOWNLOAD          256 /* APP下载 */
 #define NDPI_PROTOCOL_QQ_VIDEO              257 /* Tencent Video */
+#define NDPI_PROTOCOL_QQ_HUANLE             258 /* QQ Huanle Game*/
+#define NDPI_PROTOCOL_WZRY                  259 /* 王者荣耀 */
+#define NDPI_PROTOCOL_HYXD                  260 /* 荒野行动 */
+
+//2018-3-6
+#define NDPI_PROTOCOL_MEITUAN               261 /* 美团 */
+#define NDPI_PROTOCOL_XIMALAYA              262 /* 喜马拉雅 */
+#define NDPI_PROTOCOL_MI_SHOP               263 /* 小米 应用商店 */
+#define NDPI_PROTOCOL_360Helper             264 /* 360 手机助手 */
+#define NDPI_PROTOCOL_BAIDU                 265 /* 百度 */
+#define NDPI_PROTOCOL_BAIDU_MAP             266 /* 百度地图 */
+#define NDPI_PROTOCOL_BAIDU_NUOMI           267 /* 百度糯米 */
+#define NDPI_PROTOCOL_QQ_MUSIC              268 /* QQ音乐 */
+#define NDPI_PROTOCOL_IFENG                 269 /* 凤凰新闻 */
+
 
 
 /* UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE */
-#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_QQ_VIDEO
+#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_IFENG
 
 #define NDPI_MAX_SUPPORTED_PROTOCOLS                (NDPI_LAST_IMPLEMENTED_PROTOCOL + 1)
 #define NDPI_MAX_NUM_CUSTOM_PROTOCOLS               (NDPI_NUM_BITS-NDPI_LAST_IMPLEMENTED_PROTOCOL)

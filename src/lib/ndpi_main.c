@@ -1254,6 +1254,13 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "DouDiZHu", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//Game Stream -- QQ Huanle
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_QQ_HUANLE,
+			    no_master,
+			    no_master, "QQ_Huanle", NDPI_PROTOCOL_CATEGORY_CHAT,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+			    
 	//今日头条
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TOUTIAO,
 			    no_master,
@@ -1279,6 +1286,72 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 			    
+	//王者荣耀
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_WZRY,
+			    no_master,
+			    no_master, "Royal_Glory", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//荒野行动
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HYXD,
+			    no_master,
+			    no_master, "HYXD", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//凤凰新闻
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_IFENG,
+			    no_master,
+			    no_master, "iFeng", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//美团
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_MEITUAN,
+			    no_master,
+			    no_master, "MeiTuan", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//QQ Music
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_QQ_MUSIC,
+			    no_master,
+			    no_master, "QQ(Music)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//喜马拉雅
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_XIMALAYA,
+			    no_master,
+			    no_master, "XiMalaya", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//360手机助手
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_360Helper,
+			    no_master,
+			    no_master, "360Helper", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//小米应用商店
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_MI_SHOP,
+			    no_master,
+			    no_master, "Mi(AppShop)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//百度
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_BAIDU,
+			    no_master,
+			    no_master, "Baidu", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//百度地图
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_BAIDU_MAP,
+			    no_master,
+			    no_master, "Baidu(Map)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//百度糯米
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_BAIDU_NUOMI,
+			    no_master,
+			    no_master, "Baidu(Nuomi)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
     ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_ZATTOO,
 			    no_master,
 			    no_master, "Zattoo", NDPI_PROTOCOL_CATEGORY_MEDIA,
@@ -2765,6 +2838,14 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
 
   /* QQ */
   init_qq_dissector(ndpi_struct, &a, detection_bitmask);
+  /* QQ Huanle Game */
+  init_qq_huanle_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* Royal_Glory */
+  init_wzry_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* HYXD */
+  init_hyxd_dissector(ndpi_struct, &a, detection_bitmask);
 
   /* SSH */
   init_ssh_dissector(ndpi_struct, &a, detection_bitmask);
@@ -3663,25 +3744,24 @@ void check_ndpi_tcp_flow_func(struct ndpi_detection_module_struct *ndpi_struct,
 			       detection_bitmask) != 0
        && (ndpi_struct->callback_buffer[proto_index].ndpi_selection_bitmask & *ndpi_selection_packet) == ndpi_struct->callback_buffer[proto_index].ndpi_selection_bitmask) {
       if((flow->guessed_protocol_id != NDPI_PROTOCOL_UNKNOWN)
-	 && (ndpi_struct->proto_defaults[flow->guessed_protocol_id].func != NULL))
-	ndpi_struct->proto_defaults[flow->guessed_protocol_id].func(ndpi_struct, flow),
-	  func = ndpi_struct->proto_defaults[flow->guessed_protocol_id].func;
+		&& (ndpi_struct->proto_defaults[flow->guessed_protocol_id].func != NULL))
+			ndpi_struct->proto_defaults[flow->guessed_protocol_id].func(ndpi_struct, flow),
+			func = ndpi_struct->proto_defaults[flow->guessed_protocol_id].func;
     }
 
     if(flow->detected_protocol_stack[0] == NDPI_PROTOCOL_UNKNOWN) {
       for(a = 0; a < ndpi_struct->callback_buffer_size_tcp_payload; a++) {
-	if((func != ndpi_struct->callback_buffer_tcp_payload[a].func)
-	   && (ndpi_struct->callback_buffer_tcp_payload[a].ndpi_selection_bitmask & *ndpi_selection_packet) == ndpi_struct->callback_buffer_tcp_payload[a].ndpi_selection_bitmask
-	   && NDPI_BITMASK_COMPARE(flow->excluded_protocol_bitmask,
-				   ndpi_struct->callback_buffer_tcp_payload[a].excluded_protocol_bitmask) == 0
-	   && NDPI_BITMASK_COMPARE(ndpi_struct->callback_buffer_tcp_payload[a].detection_bitmask,
-				   detection_bitmask) != 0) {
-	  ndpi_struct->callback_buffer_tcp_payload[a].func(ndpi_struct, flow);
-
-
-	  if(flow->detected_protocol_stack[0] != NDPI_PROTOCOL_UNKNOWN)
-	    break; /* Stop after detecting the first protocol */
-	}
+		if((func != ndpi_struct->callback_buffer_tcp_payload[a].func)
+		   && (ndpi_struct->callback_buffer_tcp_payload[a].ndpi_selection_bitmask & *ndpi_selection_packet) == ndpi_struct->callback_buffer_tcp_payload[a].ndpi_selection_bitmask
+		   && NDPI_BITMASK_COMPARE(flow->excluded_protocol_bitmask,
+					   ndpi_struct->callback_buffer_tcp_payload[a].excluded_protocol_bitmask) == 0
+		   && NDPI_BITMASK_COMPARE(ndpi_struct->callback_buffer_tcp_payload[a].detection_bitmask,
+					   detection_bitmask) != 0) {
+				
+			  ndpi_struct->callback_buffer_tcp_payload[a].func(ndpi_struct, flow);
+			  if(flow->detected_protocol_stack[0] != NDPI_PROTOCOL_UNKNOWN)
+				break; /* Stop after detecting the first protocol */
+		}
       }
     }
   } else {
@@ -3694,10 +3774,10 @@ void check_ndpi_tcp_flow_func(struct ndpi_detection_module_struct *ndpi_struct,
        && (ndpi_struct->callback_buffer[proto_index].ndpi_selection_bitmask
 	   & *ndpi_selection_packet) == ndpi_struct->callback_buffer[proto_index].ndpi_selection_bitmask) {
       if((flow->guessed_protocol_id != NDPI_PROTOCOL_UNKNOWN)
-	 && (ndpi_struct->proto_defaults[flow->guessed_protocol_id].func != NULL)
-	 && ((ndpi_struct->callback_buffer[flow->guessed_protocol_id].ndpi_selection_bitmask & NDPI_SELECTION_BITMASK_PROTOCOL_HAS_PAYLOAD) == 0))
-	ndpi_struct->proto_defaults[flow->guessed_protocol_id].func(ndpi_struct, flow),
-	  func = ndpi_struct->proto_defaults[flow->guessed_protocol_id].func;
+		 && (ndpi_struct->proto_defaults[flow->guessed_protocol_id].func != NULL)
+		 && ((ndpi_struct->callback_buffer[flow->guessed_protocol_id].ndpi_selection_bitmask & NDPI_SELECTION_BITMASK_PROTOCOL_HAS_PAYLOAD) == 0))
+			ndpi_struct->proto_defaults[flow->guessed_protocol_id].func(ndpi_struct, flow),
+			func = ndpi_struct->proto_defaults[flow->guessed_protocol_id].func;
     }
 
     for(a = 0; a < ndpi_struct->callback_buffer_size_tcp_no_payload; a++) {
@@ -3936,22 +4016,22 @@ ndpi_protocol ndpi_detection_process_packet(struct ndpi_detection_module_struct 
 
     if(user_defined_proto && flow->guessed_protocol_id != NDPI_PROTOCOL_UNKNOWN) {
       if(flow->packet.iph) {
-	/* guess host protocol */
-	flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->saddr);
-	if(flow->guessed_host_protocol_id == NDPI_PROTOCOL_UNKNOWN)
-	  flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->daddr);
-	if(flow->guessed_host_protocol_id != NDPI_PROTOCOL_UNKNOWN)
-	  /* ret.master_protocol = flow->guessed_protocol_id , ret.app_protocol = flow->guessed_host_protocol_id; /\* ****** *\/ */
-	  ret = ndpi_detection_giveup(ndpi_struct, flow);
+		/* guess host protocol */
+		flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->saddr);
+		if(flow->guessed_host_protocol_id == NDPI_PROTOCOL_UNKNOWN)
+		  flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->daddr);
+		if(flow->guessed_host_protocol_id != NDPI_PROTOCOL_UNKNOWN)
+		  /* ret.master_protocol = flow->guessed_protocol_id , ret.app_protocol = flow->guessed_host_protocol_id; /\* ****** *\/ */
+		  ret = ndpi_detection_giveup(ndpi_struct, flow);
 
-	return(ret);
+		return(ret);
       }
     } else {
       /* guess host protocol */
       if(flow->packet.iph) {
-	flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->saddr);
-	if(flow->guessed_host_protocol_id == NDPI_PROTOCOL_UNKNOWN)
-	  flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->daddr);
+		flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->saddr);
+		if(flow->guessed_host_protocol_id == NDPI_PROTOCOL_UNKNOWN)
+		  flow->guessed_host_protocol_id = ndpi_network_ptree_match(ndpi_struct, (struct in_addr *)&flow->packet.iph->daddr);
       }
     }
   }
