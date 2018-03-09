@@ -8383,86 +8383,152 @@ ndpi_protocol_match host_match[] = {
   { ".weread.qq.com", NULL, NULL,             "WeRead",         NDPI_PROTOCOL_WEREAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { "huanle.qq.com", NULL, NULL,              "QouDiZhu",       NDPI_PROTOCOL_DOUDIZHU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
-  { "video.qq.com", NULL, NULL,              "QQ(Video)",   NDPI_PROTOCOL_QQ_VIDEO, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
-  { "video.tc.qq.com", NULL, NULL,           "QQ(Video)",   NDPI_PROTOCOL_QQ_VIDEO, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
-  { "music.qq.com", NULL, NULL,              "QQ(Music)",   NDPI_PROTOCOL_QQ_MUSIC, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
+  { "video.qq.com", NULL, NULL,              "QQ(Video)",       NDPI_PROTOCOL_QQ_VIDEO, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
+  { "video.tc.qq.com", NULL, NULL,           "QQ(Video)",       NDPI_PROTOCOL_QQ_VIDEO, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
+  { "music.qq.com", NULL, NULL,              "QQ(Music)",       NDPI_PROTOCOL_QQ_MUSIC, NDPI_PROTOCOL_CATEGORY_CHAT, NDPI_PROTOCOL_FUN },
+  { "now.qq.com", NULL, NULL,                "QQ(Now)",         NDPI_PROTOCOL_QQ_NOW, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "liveplay.myqcloud.com", NULL, NULL,     "QQ(Now)",         NDPI_PROTOCOL_QQ_NOW, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
-  { ".alipay.com", NULL, NULL,               "AliPay",              NDPI_PROTOCOL_ALIPAY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".alipayobjects.com", NULL, NULL,        "AliPay",              NDPI_PROTOCOL_ALIPAY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".taobao.com", NULL, NULL,               "Taobao",              NDPI_PROTOCOL_TAOBAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".tmall.com", NULL, NULL,                "Tmall",               NDPI_PROTOCOL_TAOBAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".igetget.com", NULL, NULL,              "DeDao",               NDPI_PROTOCOL_DEDAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".zhihu.com", NULL, NULL,                "ZhiHu",               NDPI_PROTOCOL_ZHIHU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".alipay.com", NULL, NULL,               "AliPay",          NDPI_PROTOCOL_ALIPAY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".alipayobjects.com", NULL, NULL,        "AliPay",          NDPI_PROTOCOL_ALIPAY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".taobao.com", NULL, NULL,               "Taobao",          NDPI_PROTOCOL_TAOBAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".tmall.com", NULL, NULL,                "Tmall",           NDPI_PROTOCOL_TMALL, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".igetget.com", NULL, NULL,              "DeDao",           NDPI_PROTOCOL_DEDAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".zhihu.com", NULL, NULL,                "ZhiHu",           NDPI_PROTOCOL_ZHIHU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
-  { ".58.com", NULL, NULL,               "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".58cdn.com.cn", NULL, NULL,         "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".xueche.com", NULL, NULL,           "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".5858.com", NULL, NULL,             "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".jxedt.com", NULL, NULL,            "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".zhuanzhuan.com", NULL, NULL,       "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".58xueche.com", NULL, NULL,         "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".zhuanspirit.com", NULL, NULL,      "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".zhuancorp.com", NULL, NULL,        "58",               NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  
-  { ".vip.com", NULL, NULL,               "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".vpimg2.com", NULL, NULL,            "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".vpimg3.com", NULL, NULL,            "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".vpimg4.com", NULL, NULL,            "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".vipstatic.com", NULL, NULL,         "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".appvipshop.com", NULL, NULL,        "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".appsimg.com", NULL, NULL,           "VIP",               NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".jd.com", NULL, NULL,               "JD",               NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".jdcdn.com", NULL, NULL,            "JD",               NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".360buyimg.com", NULL, NULL,        "JD",               NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".qianxun.com", NULL, NULL,          "JD",               NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".hupu.com", NULL, NULL,               "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".hoopchina.com.cn", NULL, NULL,       "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".hoopchina.cn", NULL, NULL,           "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".hupu.org", NULL, NULL,               "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".liangle.com", NULL, NULL,            "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".liangle.cn", NULL, NULL,             "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".shihuo.com.cn", NULL, NULL,          "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".shihuo.cn", NULL, NULL,              "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".dongqiudi.com", NULL, NULL,            "DongQiuDi",               NDPI_PROTOCOL_DONGQIUDI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".koubei.com", NULL, NULL,               "KouBei",               NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".toutiao.com", NULL, NULL,              "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".pstatp.com", NULL, NULL,               "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".snssdk.com", NULL, NULL,               "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".ixigua.com", NULL, NULL,               "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".toutiao51.com", NULL, NULL,            "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".toutiao13.com", NULL, NULL,            "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".wukongwenda.com", NULL, NULL,          "TouTiao",               NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".ifeng.com", NULL, NULL,               "iFeng",               NDPI_PROTOCOL_IFENG, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".ifengimg.com", NULL, NULL,            "iFeng",               NDPI_PROTOCOL_IFENG, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".meituan.com", NULL, NULL,              "MeiTuan",               NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".meituan.net", NULL, NULL,              "MeiTuan",               NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".dianping.com", NULL, NULL,             "MeiTuan",               NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".dpfile.com", NULL, NULL,               "MeiTuan",               NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".maoyan.com", NULL, NULL,               "MeiTuan(MaoYan)",       NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".market.xiaomi.com", NULL, NULL,    "MI(AppStore)",               NDPI_PROTOCOL_MI_SHOP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".ximalaya.com", NULL, NULL,         "XiMalaya",               NDPI_PROTOCOL_XIMALAYA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".xmcdn.com", NULL, NULL,            "XiMalaya",               NDPI_PROTOCOL_XIMALAYA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".360.cn", NULL, NULL,               "360",               NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".qhimg.com", NULL, NULL,            "360",               NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".360tpcdn.com", NULL, NULL,         "360",               NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  
-  { ".baidu.com", NULL, NULL,            "Baidu",               NDPI_PROTOCOL_BAIDU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".baifubao.com", NULL, NULL,         "Baidu(Pay)",               NDPI_PROTOCOL_BAIDU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".bdimg.com", NULL, NULL,            "Baidu",               NDPI_PROTOCOL_BAIDU_MAP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { ".nuomi.com", NULL, NULL,            "Baidu(NuoMi)",               NDPI_PROTOCOL_BAIDU_NUOMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "client.map.baidu.com", NULL, NULL,  "Baidu(Map)",               NDPI_PROTOCOL_BAIDU_MAP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".58.com", NULL, NULL,               "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".58cdn.com.cn", NULL, NULL,         "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".xueche.com", NULL, NULL,           "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".5858.com", NULL, NULL,             "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".jxedt.com", NULL, NULL,            "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".zhuanzhuan.com", NULL, NULL,       "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".58xueche.com", NULL, NULL,         "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".zhuanspirit.com", NULL, NULL,      "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".zhuancorp.com", NULL, NULL,        "58",                  NDPI_PROTOCOL_58, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
   
+  { ".vip.com", NULL, NULL,               "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".vpimg2.com", NULL, NULL,            "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".vpimg3.com", NULL, NULL,            "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".vpimg4.com", NULL, NULL,            "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".vipstatic.com", NULL, NULL,         "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".appvipshop.com", NULL, NULL,        "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".appsimg.com", NULL, NULL,           "VIP",                NDPI_PROTOCOL_VIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".jd.com", NULL, NULL,                "JD",                 NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".jdcdn.com", NULL, NULL,             "JD",                 NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".360buyimg.com", NULL, NULL,         "JD",                 NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".qianxun.com", NULL, NULL,           "JD",                 NDPI_PROTOCOL_JD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".hupu.com", NULL, NULL,              "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".hoopchina.com.cn", NULL, NULL,      "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".hoopchina.cn", NULL, NULL,          "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".hupu.org", NULL, NULL,              "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".liangle.com", NULL, NULL,           "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".liangle.cn", NULL, NULL,            "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".shihuo.com.cn", NULL, NULL,         "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".shihuo.cn", NULL, NULL,             "Hupu",               NDPI_PROTOCOL_HUPU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".dongqiudi.com", NULL, NULL,         "DongQiuDi",          NDPI_PROTOCOL_DONGQIUDI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".koubei.com", NULL, NULL,            "KouBei",             NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".toutiao.com", NULL, NULL,           "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".pstatp.com", NULL, NULL,            "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".snssdk.com", NULL, NULL,            "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".ixigua.com", NULL, NULL,            "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".toutiao51.com", NULL, NULL,         "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".toutiao13.com", NULL, NULL,         "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".wukongwenda.com", NULL, NULL,       "TouTiao",            NDPI_PROTOCOL_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "dy.ixigua.com", NULL, NULL,          "TouTiao(DouYin)",    NDPI_PROTOCOL_DOUYIN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "dy.ixiguavideo.com", NULL, NULL,     "TouTiao(DouYin)",    NDPI_PROTOCOL_DOUYIN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "xg.ixigua.com", NULL, NULL,          "TouTiao(XiGua)",     NDPI_PROTOCOL_XIGUA_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "xg.ixiguavideo.com", NULL, NULL,     "TouTiao(XiGua)",     NDPI_PROTOCOL_XIGUA_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "hs.ixigua.com", NULL, NULL,          "TouTiao(HuoShan)",   NDPI_PROTOCOL_HUOSHAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "hs.ixiguavideo.com", NULL, NULL,     "TouTiao(HuoShan)",   NDPI_PROTOCOL_HUOSHAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".ifeng.com", NULL, NULL,             "iFeng",              NDPI_PROTOCOL_IFENG, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".ifengimg.com", NULL, NULL,          "iFeng",              NDPI_PROTOCOL_IFENG, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".meituan.com", NULL, NULL,           "MeiTuan",            NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".meituan.net", NULL, NULL,           "MeiTuan",            NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".dianping.com", NULL, NULL,          "MeiTuan",            NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".dpfile.com", NULL, NULL,            "MeiTuan",            NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".maoyan.com", NULL, NULL,            "MeiTuan(MaoYan)",    NDPI_PROTOCOL_MEITUAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".market.xiaomi.com", NULL, NULL,     "MI(AppStore)",       NDPI_PROTOCOL_MI_SHOP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".ximalaya.com", NULL, NULL,          "XiMalaya",           NDPI_PROTOCOL_XIMALAYA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".xmcdn.com", NULL, NULL,             "XiMalaya",           NDPI_PROTOCOL_XIMALAYA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".360.cn", NULL, NULL,                "360",                NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".qhimg.com", NULL, NULL,             "360",                NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".360tpcdn.com", NULL, NULL,          "360",                NDPI_PROTOCOL_360Helper, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".360kan.com", NULL, NULL,            "360(Kuai)",          NDPI_PROTOCOL_360_KUAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".baidu.com", NULL, NULL,             "Baidu",              NDPI_PROTOCOL_BAIDU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".baifubao.com", NULL, NULL,          "Baidu(Pay)",         NDPI_PROTOCOL_BAIDU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".bdimg.com", NULL, NULL,             "Baidu",              NDPI_PROTOCOL_BAIDU_MAP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".nuomi.com", NULL, NULL,             "Baidu(NuoMi)",       NDPI_PROTOCOL_BAIDU_NUOMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "client.map.baidu.com", NULL, NULL,   "Baidu(Map)",         NDPI_PROTOCOL_BAIDU_MAP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".yximgs.com", NULL, NULL,            "KaiShou",            NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "gifshow.com", NULL, NULL,            "KaiShou",            NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "kuaishou.com", NULL, NULL,           "KaiShou",            NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "ksapisrv.com", NULL, NULL,           "KaiShou",            NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "kuaishoupay.com", NULL, NULL,        "KaiShou",            NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "gpsoo.net", NULL, NULL,              "KuMiKe",             NDPI_PROTOCOL_KUMIKE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "codoon.com", NULL, NULL,             "GuDong",             NDPI_PROTOCOL_GUDONG, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "douyu.com", NULL, NULL,              "DouYu",              NDPI_PROTOCOL_DOUYU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "douyucdn", NULL, NULL,               "DouYu",              NDPI_PROTOCOL_DOUYU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "longzhu.com", NULL, NULL,            "LongZhu",            NDPI_PROTOCOL_LONGZHU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "panda.tv", NULL, NULL,               "PandaTV",            NDPI_PROTOCOL_PANDA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "pdim.gs", NULL, NULL,                "PandaTV",            NDPI_PROTOCOL_PANDA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "huajiao.com", NULL, NULL,            "HuaJiao",            NDPI_PROTOCOL_HUAJIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "migu.cn", NULL, NULL,                "MiGu",               NDPI_PROTOCOL_MIGU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "cmvideo.cn", NULL, NULL,             "MiGu",               NDPI_PROTOCOL_MIGU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "miguvideo.com", NULL, NULL,          "MiGu",               NDPI_PROTOCOL_MIGU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "hiido.com", NULL, NULL,              "YY",                 NDPI_PROTOCOL_YY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "yy.com", NULL, NULL,                 "YY",                 NDPI_PROTOCOL_YY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "yystatic.com", NULL, NULL,           "YY",                 NDPI_PROTOCOL_YY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".huya.com", NULL, NULL,              "YY(Huya)",           NDPI_PROTOCOL_HUYA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+
+  { "xiami.com", NULL, NULL,              "Xiami",              NDPI_PROTOCOL_XIAMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "xiaopai.com", NULL, NULL,            "MiaoPai",            NDPI_PROTOCOL_MIAOPAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "yixia.com", NULL, NULL,              "MiaoPai",            NDPI_PROTOCOL_MIAOPAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "krcom.cn", NULL, NULL,               "MiaoPai",            NDPI_PROTOCOL_MIAOPAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "fanxing.com", NULL, NULL,            "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "fxvideo.", NULL, NULL,               "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".fanxing.", NULL, NULL,              "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".fx.kgimg.com", NULL, NULL,          "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "acshow.kugou.com", NULL, NULL,       "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "mofx2.kugou.com", NULL, NULL,        "KuGou(Live)",        NDPI_PROTOCOL_KUGOU_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "quanmin.tv", NULL, NULL,             "QuanMin",            NDPI_PROTOCOL_QUANMIN_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "shouyintv.cn", NULL, NULL,           "QuanMin",            NDPI_PROTOCOL_QUANMIN_LIVE, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "tv.sohu.com", NULL, NULL,            "SoHu(Video)",        NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "film.sohu.com", NULL, NULL,          "SoHu(Video)",        NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "hd.sohu.com", NULL, NULL,            "SoHu(Video)",        NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "vrs.sohu.com", NULL, NULL,           "SoHu(Video)",        NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "sohu.com", NULL, NULL,               "SoHu(Video)",        NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "tudou.com", NULL, NULL,              "TuDou",              NDPI_PROTOCOL_TUDOU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "tudou-", NULL, NULL,                 "TuDou",              NDPI_PROTOCOL_TUDOU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "youku.com", NULL, NULL,              "YouKu",              NDPI_PROTOCOL_YOUKU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "ykimg.com", NULL, NULL,              "YouKu",              NDPI_PROTOCOL_YOUKU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { ".cibntv.", NULL, NULL,               "CIBNTV",             NDPI_PROTOCOL_CIBNTV, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
 
   { "dnscrypt.org", NULL, NULL,             "DNScrypt",         NDPI_PROTOCOL_DNSCRYPT, NDPI_PROTOCOL_CATEGORY_NETWORK, NDPI_PROTOCOL_ACCEPTABLE },
@@ -8559,13 +8625,17 @@ ndpi_protocol_match content_match[] = {
   Mime-type useragent match match
 */
 ndpi_protocol_match useragent_match[] = {
-  { "kwai-android",                   NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "kwaiplayer",                   NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "MicroMessenger Client",                 NULL, NULL, NULL,           NDPI_PROTOCOL_WECHAT, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "weibo",                 NULL, NULL,  "Sina(Weibo)",           NDPI_PROTOCOL_SINA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "KoubeiClient",                 NULL, NULL,  "KouBei",           NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "KOUBEI",                 NULL, NULL,  "KouBei",           NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
-  { "AndroidDownloadManager", NULL, NULL,  "APP_DOWNLOAD",           NDPI_PROTOCOL_APP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "kwai-android",           NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "kwaiplayer",             NULL, NULL, NULL,           NDPI_PROTOCOL_KWAI_APP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "MicroMessenger Client",  NULL, NULL, NULL,           NDPI_PROTOCOL_WECHAT, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "weibo",                  NULL, NULL,  "Sina(Weibo)", NDPI_PROTOCOL_SINA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "KoubeiClient",           NULL, NULL,  "KouBei",      NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "KOUBEI",                 NULL, NULL,  "KouBei",      NDPI_PROTOCOL_KOUBEI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "AndroidDownloadManager", NULL, NULL,  "APP_DOWNLOAD",NDPI_PROTOCOL_APP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "pandatv",                NULL, NULL,  "PandaTV",     NDPI_PROTOCOL_PANDA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "QQMusic",                NULL, NULL,  "QQ(Music)",   NDPI_PROTOCOL_PANDA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "xiami",                  NULL, NULL,  "Xiami",       NDPI_PROTOCOL_XIAMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "SohuAndroidP2P",         NULL, NULL,  "SoHu(Video)", NDPI_PROTOCOL_SOHU_VIDEO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
   { NULL, NULL, NULL, 0 }
 };
@@ -8574,7 +8644,14 @@ ndpi_protocol_match useragent_match[] = {
 	Mime-type uri
 */
 ndpi_protocol_match uri_match[] = {
-  { ".apk",                 NULL, NULL,  "APP_DOWNLOAD",           NDPI_PROTOCOL_APP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".apk",                 NULL, NULL,  "APP_DOWNLOAD",      NDPI_PROTOCOL_APP_DOWNLOAD, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "neihan",               NULL, NULL,  "TouTiao(NeiHan)",   NDPI_PROTOCOL_NEIHAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "app_name=live_stream", NULL, NULL,  "TouTiao(HuoShan)",  NDPI_PROTOCOL_HUOSHAN, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "panda.tv",             NULL, NULL,  "PandaTV",           NDPI_PROTOCOL_PANDA, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "huajiao",              NULL, NULL,  "HuaJiao",           NDPI_PROTOCOL_HUAJIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "xiami",                NULL, NULL,  "Xiami",             NDPI_PROTOCOL_XIAMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "miaopai",              NULL, NULL,  "MiaoPai",           NDPI_PROTOCOL_MIAOPAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
   { NULL, NULL, NULL, 0 }
 };
 

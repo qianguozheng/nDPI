@@ -21,6 +21,9 @@ __mingw_forceinline static
 #else
 __forceinline static
 #endif
+
+//Server Response: 5:0x78 6:0x01
+
 u_int8_t search_client_request(struct ndpi_detection_module_struct *ndpi_struct, struct ndpi_flow_struct *flow)
 {
   struct ndpi_packet_struct *packet = &flow->packet;
@@ -31,9 +34,10 @@ u_int8_t search_client_request(struct ndpi_detection_module_struct *ndpi_struct,
     return 0;
   }
   //前6个字节的内容，不知道下一个版本对不对，下次再测试看看
-  if (!(packet->payload[0] == 0x00
-	&& packet->payload[1] == 0x00 && packet->payload[2] == 0x00 && packet->payload[3] == 0x18
-	&& packet->payload[4] == 0x78 && packet->payload[5] == 0x01)) {
+  if (!(//packet->payload[0] == 0x00
+	//&& packet->payload[1] == 0x00 && packet->payload[2] == 0x00 && packet->payload[3] == 0x18
+	//&& 
+	packet->payload[4] == 0x78 && packet->payload[5] == 0x01)) {
     return 0;
   }
 
@@ -54,7 +58,7 @@ void ndpi_search_qq_huanle_tcp(struct ndpi_detection_module_struct
       return;
   }
 
-  if ((flow->packet_counter < 12 && flow->l4.tcp.telnet_stage > 0) || flow->packet_counter < 6) {
+  if ((flow->packet_counter < 12) || flow->packet_counter < 6) {
     return;
   } else {
     NDPI_EXCLUDE_PROTO(ndpi_struct, flow);

@@ -169,6 +169,7 @@ libndpi_la_SOURCES = ndpi_content_match.c.inc \
 		     protocols/someip.c \
 		     protocols/netease_hyxd.c \
 		     protocols/wzry_pvp.c \
+		     protocols/yy.c \
 		     third_party/include/actypes.h \
 		     third_party/include/ahocorasick.h \
 		     third_party/include/ndpi_patricia.h \

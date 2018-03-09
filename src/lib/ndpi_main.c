@@ -1168,6 +1168,7 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "PPStream", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+#if 0
 	//快手
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_KWAI_APP,
 			    no_master,
@@ -1254,12 +1255,7 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "DouDiZHu", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//Game Stream -- QQ Huanle
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_QQ_HUANLE,
-			    no_master,
-			    no_master, "QQ_Huanle", NDPI_PROTOCOL_CATEGORY_CHAT,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	
 			    
 	//今日头条
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TOUTIAO,
@@ -1286,18 +1282,7 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 			    
-	//王者荣耀
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_WZRY,
-			    no_master,
-			    no_master, "Royal_Glory", NDPI_PROTOCOL_CATEGORY_MEDIA,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//荒野行动
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HYXD,
-			    no_master,
-			    no_master, "HYXD", NDPI_PROTOCOL_CATEGORY_MEDIA,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+
 	//凤凰新闻
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_IFENG,
 			    no_master,
@@ -1352,6 +1337,63 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "Baidu(Nuomi)", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	
+	//内涵段子 - 今日头条
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_NEIHAN,
+			    no_master,
+			    no_master, "TouTiao(NeiHan)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//火山小视频
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HUOSHAN,
+			    no_master,
+			    no_master, "HuoShan(Video)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//虎牙直播
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HUYA,
+			    no_master,
+			    no_master, "Huya(Live)", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//咕咚
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_GUDONG,
+			    no_master,
+			    no_master, "GuDong", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//酷米客
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_KUMIKE,
+			    no_master,
+			    no_master, "KuMiKe", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+#endif
+		//Game Stream -- QQ Huanle
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_QQ_HUANLE,
+			    no_master,
+			    no_master, "QQ_Huanle", NDPI_PROTOCOL_CATEGORY_CHAT,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//王者荣耀
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_WZRY,
+			    no_master,
+			    no_master, "Royal_Glory", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//荒野行动
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HYXD,
+			    no_master,
+			    no_master, "HYXD", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//YY
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_YY,
+			    no_master,
+			    no_master, "YY", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+			    
     ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_ZATTOO,
 			    no_master,
 			    no_master, "Zattoo", NDPI_PROTOCOL_CATEGORY_MEDIA,
@@ -2838,8 +2880,11 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
 
   /* QQ */
   init_qq_dissector(ndpi_struct, &a, detection_bitmask);
+  
   /* QQ Huanle Game */
   init_qq_huanle_dissector(ndpi_struct, &a, detection_bitmask);
+  /* YY */
+  init_yy_dissector(ndpi_struct, &a, detection_bitmask);
   
   /* Royal_Glory */
   init_wzry_dissector(ndpi_struct, &a, detection_bitmask);
@@ -5298,6 +5343,12 @@ int ndpi_match_string_subprotocol_uri(struct ndpi_detection_module_struct *ndpi_
 
 #ifndef HAVE_HYPERSCAN
 
+enum {
+	MATCH_HOST=0,
+	MATCH_CONTENT,
+	MATCH_USERAGENT,
+	MATCH_URI
+};
 static int ndpi_automa_match_string_subprotocol(struct ndpi_detection_module_struct *ndpi_struct,
 						struct ndpi_flow_struct *flow,
 						char *string_to_match, u_int string_to_match_len,
@@ -5305,10 +5356,19 @@ static int ndpi_automa_match_string_subprotocol(struct ndpi_detection_module_str
 						u_int8_t is_host_match) {
 	
 	int matching_protocol_id;
-	if (2 == is_host_match ) {
-		matching_protocol_id = ndpi_match_string_subprotocol_ua(ndpi_struct, string_to_match, string_to_match_len, is_host_match);
-	 } else {
-		matching_protocol_id = ndpi_match_string_subprotocol(ndpi_struct, string_to_match, string_to_match_len, is_host_match);
+	
+	switch (is_host_match) {
+		case MATCH_URI: //uri match
+			matching_protocol_id = ndpi_match_string_subprotocol_uri(ndpi_struct, string_to_match, string_to_match_len, is_host_match);
+			break;
+		case MATCH_USERAGENT: //user agent match
+			matching_protocol_id = ndpi_match_string_subprotocol_ua(ndpi_struct, string_to_match, string_to_match_len, is_host_match);
+			break;
+		case MATCH_HOST:
+		case MATCH_CONTENT:
+		default:
+			matching_protocol_id = ndpi_match_string_subprotocol(ndpi_struct, string_to_match, string_to_match_len, is_host_match);
+			break;
 	}
 	
   struct ndpi_packet_struct *packet = &flow->packet;
@@ -5325,7 +5385,7 @@ static int ndpi_automa_match_string_subprotocol(struct ndpi_detection_module_str
 	   m, ndpi_struct->proto_defaults[matching_protocol_id].protoName);
   }
 #endif
-	if (0 == is_host_match) {
+	if (MATCH_HOST == is_host_match) {
 		//...
 		if (matching_protocol_id == NDPI_PROTOCOL_HTTP_DOWNLOAD) {
 			flow->app_download_stage += 1;
@@ -5422,6 +5482,15 @@ int ndpi_match_useragent_subprotocol(struct ndpi_detection_module_struct *ndpi_s
 					      master_protocol_id, 2));
 }
 
+int ndpi_match_uri_subprotocol(struct ndpi_detection_module_struct *ndpi_struct,
+				   struct ndpi_flow_struct *flow,
+				   char *string_to_match, u_int string_to_match_len,
+				   u_int16_t master_protocol_id) {
+	//printf("string_to_match=%s\n", string_to_match);
+  return(ndpi_automa_match_string_subprotocol(ndpi_struct, flow,
+					      string_to_match, string_to_match_len,
+					      master_protocol_id, 3));
+}
 
 /* ****************************************************** */
 

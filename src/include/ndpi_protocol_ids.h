@@ -284,6 +284,7 @@
 #define NDPI_PROTOCOL_WEREAD                243 /* 微信阅读 */
 #define NDPI_PROTOCOL_ALIPAY                244 /* AliPay 应该和淘宝合并 */
 #define NDPI_PROTOCOL_TAOBAO                245 /* 淘宝 */
+#define NDPI_PROTOCOL_TMALL                 293 /* 淘宝 */
 #define NDPI_PROTOCOL_DEDAO                 246 /* 得到 */
 #define NDPI_PROTOCOL_ZHIHU                 247 /* 知乎 */
 #define NDPI_PROTOCOL_JD                    248 /* 京东 */
@@ -311,10 +312,51 @@
 #define NDPI_PROTOCOL_QQ_MUSIC              268 /* QQ音乐 */
 #define NDPI_PROTOCOL_IFENG                 269 /* 凤凰新闻 */
 
+//2018-3-7
+#define NDPI_PROTOCOL_NEIHAN                270 /* 今日头条(内涵段子) */
+#define NDPI_PROTOCOL_HUYA                  271 /* 虎牙直播 */
+#define NDPI_PROTOCOL_HUOSHAN               272 /* 今日头条(火山小视频)*/
+#define NDPI_PROTOCOL_GUDONG                273 /* 咕咚 */
+#define NDPI_PROTOCOL_KUMIKE                274 /* 酷米客 */
+//#define NDPI_PROTOCOL_
+
+//2018-3-8
+#define NDPI_PROTOCOL_DOUYU                 275 /* 斗鱼直播 */
+#define NDPI_PROTOCOL_HUAJIAO               276 /* 花椒 */
+#define NDPI_PROTOCOL_LONGZHU               277 /* 龙珠直播 */
+#define NDPI_PROTOCOL_MIGU                  278 /* 咪咕视频 */
+#define NDPI_PROTOCOL_QQ_NOW                279 /* QQ Now*/
+#define NDPI_PROTOCOL_PANDA                 280 /* 熊猫直播 */
+#define NDPI_PROTOCOL_360_KUAI              281 /* 360快视频 */
+#define NDPI_PROTOCOL_YY                    282 /* YY */
+
+//2018-3-9
+#define NDPI_PROTOCOL_XIGUA_LIVE           283 /* 西瓜视频*/
+#define NDPI_PROTOCOL_KUGOU_LIVE           284 /* 酷狗直播 */
+#define NDPI_PROTOCOL_MIAOPAI              285 /* 秒拍 */
+#define NDPI_PROTOCOL_QUANMIN_LIVE         286 /* 全民直播 */
+#define NDPI_PROTOCOL_SOHU_VIDEO           287 /* 搜狐视频 */
+#define NDPI_PROTOCOL_YOUKU                288 /* 优酷 */
+#define NDPI_PROTOCOL_TUDOU                289 /* 土豆 */
+#define NDPI_PROTOCOL_DOUYIN               290 /* 抖音 */
+#define NDPI_PROTOCOL_XIAMI                291 /* 虾米 */
+#define NDPI_PROTOCOL_CIBNTV               292 /* CIBN TV */
+
+/** 集团公司，域名交叉互用，导致一些应用无法统计准确。
+ 
+ 阿里巴巴： 淘宝，支付宝，天猫，飞猪， 淘票票
+ 今日头条： 今日头条， 内涵段子， 虎牙直播
+ 百度： 百度地图， 百度， 贴吧？， 糯米
+ 腾讯： 微信， QQ，腾讯视频，QQ欢乐斗地主，王者荣耀，微信阅读，QQ音乐
+ YY： 虎牙直播， YY语音 ...
+ 360: 360助手，安全卫士，等等
+ 
+*/
+
 
 
 /* UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE */
-#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_IFENG
+#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_CIBNTV
 
 #define NDPI_MAX_SUPPORTED_PROTOCOLS                (NDPI_LAST_IMPLEMENTED_PROTOCOL + 1)
 #define NDPI_MAX_NUM_CUSTOM_PROTOCOLS               (NDPI_NUM_BITS-NDPI_LAST_IMPLEMENTED_PROTOCOL)

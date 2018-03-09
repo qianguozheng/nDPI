@@ -405,10 +405,10 @@ static void check_content_type_and_change_protocol(struct ndpi_detection_module_
 		    ndpi_get_proto_name(ndpi_struct, packet->detected_protocol_stack[0]));
 		    
 		// If QQ protocol have download, it will be reguarded as QQ not APP_DOWNLOAD.
-		//goto CHECK_UA_MIME;
+		goto CHECK_UA_MIME;
 		//Comment by Richard, to check UA and MIME type
-	    ndpi_int_http_add_connection(ndpi_struct, flow, packet->detected_protocol_stack[0]);
-	    return; /* We have identified a sub-protocol so we're done */
+	   // ndpi_int_http_add_connection(ndpi_struct, flow, packet->detected_protocol_stack[0]);
+	   // return; /* We have identified a sub-protocol so we're done */
       }
     }
   }
@@ -477,6 +477,13 @@ CHECK_UA_MIME:
 				     (char*)packet->content_line.ptr, packet->content_line.len,
 				     NDPI_PROTOCOL_HTTP);
   }
+  if (packet->http_url_name.ptr != NULL && packet->http_url_name.len != 0) {
+	ndpi_match_uri_subprotocol(ndpi_struct, flow,
+				     (char*)packet->http_url_name.ptr, packet->http_url_name.len,
+				     NDPI_PROTOCOL_HTTP);
+	//printf("   xxx  packet->http_url_name.ptr=%s\n", packet->http_url_name.ptr);
+  }
+  
 }
 
 static void check_http_payload(struct ndpi_detection_module_struct *ndpi_struct, struct ndpi_flow_struct *flow)
