@@ -342,6 +342,9 @@
 #define NDPI_PROTOCOL_XIAMI                291 /* 虾米 */
 #define NDPI_PROTOCOL_CIBNTV               292 /* CIBN TV */
 
+//2018-3-12
+#define NDPI_PROTOCOL_JDQS_GZ              293 /*绝地求生-光子工作室*/ /*绝地求生-甜美工作室*/
+#define NDPI_PROTOCOL_YINYANG              294 /* 阴阳师 */
 /** 集团公司，域名交叉互用，导致一些应用无法统计准确。
  
  阿里巴巴： 淘宝，支付宝，天猫，飞猪， 淘票票
@@ -356,7 +359,7 @@
 
 
 /* UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE */
-#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_CIBNTV
+#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_YINYANG
 
 #define NDPI_MAX_SUPPORTED_PROTOCOLS                (NDPI_LAST_IMPLEMENTED_PROTOCOL + 1)
 #define NDPI_MAX_NUM_CUSTOM_PROTOCOLS               (NDPI_NUM_BITS-NDPI_LAST_IMPLEMENTED_PROTOCOL)

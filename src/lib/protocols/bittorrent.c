@@ -47,7 +47,13 @@ struct ndpi_utp_hdr {
 
 static u_int8_t is_utp_pkt(const u_int8_t *payload, u_int payload_len) {
   struct ndpi_utp_hdr *h = (struct ndpi_utp_hdr*)payload;
-
+	if (payload_len ==33) { //腾讯 绝地求生-全民出击 会错误识别
+		if (payload[0] == 0x1 && payload[1] == 0x0 && payload[2] == 0x0 && payload[3] == 0x0
+		 && payload[4] == 0x0 && payload[5] == 0x0 && payload[6] == 0x0 && payload[32] == 0x8)
+		 {
+			 return 0;
+			}
+	}
   if(payload_len < sizeof(struct ndpi_utp_hdr)) return(0);
   if(h->h_version != 1)             return(0);
   if(h->h_type > 4)                 return(0);
@@ -425,8 +431,9 @@ void ndpi_search_bittorrent(struct ndpi_detection_module_struct *ndpi_struct, st
 	  u_int8_t v1_extension   = packet->payload[1];
 	  u_int32_t v1_window_size = *((u_int32_t*)&packet->payload[12]);
 
-	  if(is_utp_pkt(packet->payload, packet->payload_packet_len))
+	  if(is_utp_pkt(packet->payload, packet->payload_packet_len)){
 	    goto bittorrent_found;
+	}
 	  else if((packet->payload[0]== 0x60)
 	     && (packet->payload[1]== 0x0)
 	     && (packet->payload[2]== 0x0)

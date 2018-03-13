@@ -1362,14 +1362,8 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "GuDong", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//酷米客
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_KUMIKE,
-			    no_master,
-			    no_master, "KuMiKe", NDPI_PROTOCOL_CATEGORY_MEDIA,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 #endif
-		//Game Stream -- QQ Huanle
+	//Game Stream -- 欢乐斗地主
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_QQ_HUANLE,
 			    no_master,
 			    no_master, "QQ_Huanle", NDPI_PROTOCOL_CATEGORY_CHAT,
@@ -1391,6 +1385,19 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_YY,
 			    no_master,
 			    no_master, "YY", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	
+	//绝地求生-光子工作室
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_JDQS_GZ,
+			    no_master,
+			    no_master, "JDQS_GZ", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//绝地求生-天美工作室
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_YINYANG,
+			    no_master,
+			    no_master, "YinYang", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 			    
@@ -2891,6 +2898,12 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
   
   /* HYXD */
   init_hyxd_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /*绝地求生*/
+  init_jdqs_gz_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 阴阳师 */
+  init_yinyang_dissector(ndpi_struct, &a, detection_bitmask);
 
   /* SSH */
   init_ssh_dissector(ndpi_struct, &a, detection_bitmask);
