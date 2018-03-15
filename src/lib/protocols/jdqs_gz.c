@@ -6,6 +6,10 @@
 #include "ndpi_api.h"
 #include <linux/types.h>
 
+/*
+ *  主要是UDP协议， 但是内容不定，但是4-6个数据包的长度是一样的。 主要通信数据流
+ *  另外，还有一些tcp的协议，可能是商店的相关信息。
+ */
 #define WZRY_ENSRUED1_MAX 3
 #define WZRY_ENSRUED2_MAX 2
 #define WZRY_UNSRUED1_MAX 24

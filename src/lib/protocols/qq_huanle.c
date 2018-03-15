@@ -40,6 +40,11 @@ u_int8_t search_client_request(struct ndpi_detection_module_struct *ndpi_struct,
 	packet->payload[4] == 0x78 && packet->payload[5] == 0x01)) {
     return 0;
   }
+  
+  //flow->common.ensured_pkts++;
+  //if (flow->common.ensured_pkts < 3) {
+//	  return 0;
+	//}
 
   return 1;
 }
@@ -58,7 +63,7 @@ void ndpi_search_qq_huanle_tcp(struct ndpi_detection_module_struct
       return;
   }
 
-  if ((flow->packet_counter < 12) || flow->packet_counter < 6) {
+  if (flow->packet_counter < 12) {
     return;
   } else {
     NDPI_EXCLUDE_PROTO(ndpi_struct, flow);

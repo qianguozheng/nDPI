@@ -11,7 +11,13 @@
 #define WZRY_UNSRUED1_MAX 24
 #define WZRY_UNSRUED2_MAX 4
 
-
+/**
+ * 
+ *  匹配TCP相关内容
+ *  0x02 0x00 0x00 0x00 0x00 0x00
+ * 
+ * 
+ **/
 
 static void ndpi_search_yinyang_tcp(struct ndpi_detection_module_struct *ndpi_struct, struct ndpi_flow_struct *flow)
 {
@@ -36,8 +42,9 @@ static void ndpi_search_yinyang_tcp(struct ndpi_detection_module_struct *ndpi_st
 		ndpi_set_detected_protocol(ndpi_struct, flow, NDPI_PROTOCOL_YINYANG, NDPI_PROTOCOL_UNKNOWN);
 		return;
 	}	
-	
+	#if 0 // This is XiaoMi protocol
 	if (buff[0] == 0xc2 && buff[1] == 0xfe && buff[2] == 0x00 && buff[3] == 0x05) {
+		printf("===========22\n");
 		flow->common.ensured_pkts ++;
 		if (flow->common.ensured_pkts >= WZRY_ENSRUED1_MAX) {
 			ndpi_set_detected_protocol(ndpi_struct, flow, NDPI_PROTOCOL_YINYANG, NDPI_PROTOCOL_UNKNOWN);
@@ -45,6 +52,7 @@ static void ndpi_search_yinyang_tcp(struct ndpi_detection_module_struct *ndpi_st
 		
 		return;
 	}
+	#endif
 	
 	if (packet->payload_packet_len == 6 
 	 && buff[0] == 0x02 && buff[1] == 0x00 && buff[2] == 0x00 && buff[3] == 0x00

@@ -172,6 +172,14 @@ libndpi_la_SOURCES = ndpi_content_match.c.inc \
 		     protocols/yy.c \
 		     protocols/jdqs_gz.c \
 		     protocols/netease_yinyang.c \
+		     protocols/royal_war.c \
+		     protocols/sgz2017.c \
+		     protocols/small_sgz.c \
+		     protocols/stzb.c \
+		     protocols/tank.c \
+		     protocols/poker_fish.c \
+		     protocols/dream_xiyou.c \
+		     protocols/dahua_xiyou.c \
 		     third_party/include/actypes.h \
 		     third_party/include/ahocorasick.h \
 		     third_party/include/ndpi_patricia.h \

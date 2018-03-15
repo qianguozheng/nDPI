@@ -1388,19 +1388,77 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 	
-	//绝地求生-光子工作室
+	//绝地求生-光子工作室/天美工作室
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_JDQS_GZ,
 			    no_master,
 			    no_master, "JDQS_GZ", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//绝地求生-天美工作室
+	//阴阳师
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_YINYANG,
 			    no_master,
 			    no_master, "YinYang", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	
+	/* 皇室战争 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_ROYAL_WAR,
+			    no_master,
+			    no_master, "RoyalWar", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 9339, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 9339, 0, 0, 0, 0) /* UDP */);
+	/* 三国志 2017 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_SANGUO,
+			    no_master,
+			    no_master, "SanGuo", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 7642, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	/* 率土之滨 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_SHUAITU,
+			    no_master,
+			    no_master, "ShuaiTuZhiBin", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	/* 大话西游 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_DAHUA_XIYOU,
+			    no_master,
+			    no_master, "DaHuaXiYou", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 31013, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	/* 梦幻西游 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_DREAM_XIYOU,
+			    no_master,
+			    no_master, "MengHuanXiYou", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	/* 剑侠世界2 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_JIANXIA,
+			    no_master,
+			    no_master, "JianXiaShiJie2", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	
+	/* 少年三国志 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_SMALL_SANGUO,
+			    no_master,
+			    no_master, "ShaoNianSanGuo", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0/*38422*/, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	/* 波克捕鱼 */
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_BOKE_FISH,
+			    no_master,
+			    no_master, "BoKeFisher", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 			    
+	/* 坦克前线-帝国OL*/
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TANK,
+			    no_master,
+			    no_master, "TankerQianXian", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+			    
+	
     ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_ZATTOO,
 			    no_master,
 			    no_master, "Zattoo", NDPI_PROTOCOL_CATEGORY_MEDIA,
@@ -2770,7 +2828,48 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
 
   /* HTTP */
   init_http_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* QQ Huanle Game */
+  init_qq_huanle_dissector(ndpi_struct, &a, detection_bitmask);
+  /* YY */
+  init_yy_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* Royal_Glory */
+  init_wzry_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* HYXD */
+  init_hyxd_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /*绝地求生*/
+  init_jdqs_gz_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 阴阳师 */
+  init_yinyang_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 皇室战争 */
+  init_royal_war_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 三国志 2017*/
+  init_sgz_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 少年三国志 */
+  init_small_sgz_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 率土之宾 */
+  init_stzb_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 坦克前线 */
+  init_tank_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 波克捕鱼 */
+  init_boke_fish_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 梦幻西游 */
+  init_dream_xiyou_dissector(ndpi_struct, &a, detection_bitmask);
 
+  /* 大话西游 */
+  init_dahua_xiyou_dissector(ndpi_struct, &a, detection_bitmask);
+  
   /* STARCRAFT */
   init_starcraft_dissector(ndpi_struct, &a, detection_bitmask);
 
@@ -2887,23 +2986,6 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
 
   /* QQ */
   init_qq_dissector(ndpi_struct, &a, detection_bitmask);
-  
-  /* QQ Huanle Game */
-  init_qq_huanle_dissector(ndpi_struct, &a, detection_bitmask);
-  /* YY */
-  init_yy_dissector(ndpi_struct, &a, detection_bitmask);
-  
-  /* Royal_Glory */
-  init_wzry_dissector(ndpi_struct, &a, detection_bitmask);
-  
-  /* HYXD */
-  init_hyxd_dissector(ndpi_struct, &a, detection_bitmask);
-  
-  /*绝地求生*/
-  init_jdqs_gz_dissector(ndpi_struct, &a, detection_bitmask);
-  
-  /* 阴阳师 */
-  init_yinyang_dissector(ndpi_struct, &a, detection_bitmask);
 
   /* SSH */
   init_ssh_dissector(ndpi_struct, &a, detection_bitmask);
@@ -4100,6 +4182,7 @@ ndpi_protocol ndpi_detection_process_packet(struct ndpi_detection_module_struct 
     return(ret);
   }
   
+  //核心回调函数，遍历注册在ndpi_struct的函数列表
   check_ndpi_flow_func(ndpi_struct, flow, &ndpi_selection_packet);
 
   a = flow->packet.detected_protocol_stack[0];
