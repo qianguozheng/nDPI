@@ -184,4 +184,5 @@ extern int nDPI_LogLevel;
 
 extern int openwrt_os;
 void dns_log_write(char *prefix, char *str, char *mac, uint64_t time1, char *ip);
+
 #endif

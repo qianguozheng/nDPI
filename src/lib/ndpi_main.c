@@ -1350,19 +1350,19 @@ static void ndpi_init_protocol_defaults(struct ndpi_detection_module_struct *ndp
 			    no_master, "HuoShan(Video)", NDPI_PROTOCOL_CATEGORY_MEDIA,
 			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
 			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//虎牙直播
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_HUYA,
-			    no_master,
-			    no_master, "Huya(Live)", NDPI_PROTOCOL_CATEGORY_MEDIA,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
-	//咕咚
-	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_GUDONG,
-			    no_master,
-			    no_master, "GuDong", NDPI_PROTOCOL_CATEGORY_MEDIA,
-			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
-			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 #endif
+	//终结者2
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_TERMINATOR,
+			    no_master,
+			    no_master, "Terminator2", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
+	//QQ飞车
+	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_SAFE, NDPI_PROTOCOL_QQ_CAR,
+			    no_master,
+			    no_master, "QQ_Car", NDPI_PROTOCOL_CATEGORY_MEDIA,
+			    ndpi_build_default_ports(ports_a, 0, 0, 0, 0, 0) /* TCP */,
+			    ndpi_build_default_ports(ports_b, 0, 0, 0, 0, 0) /* UDP */);
 	//Game Stream -- 欢乐斗地主
 	ndpi_set_proto_defaults(ndpi_mod, NDPI_PROTOCOL_FUN, NDPI_PROTOCOL_QQ_HUANLE,
 			    no_master,
@@ -2869,6 +2869,15 @@ void ndpi_set_protocol_detection_bitmask2(struct ndpi_detection_module_struct *n
 
   /* 大话西游 */
   init_dahua_xiyou_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 剑侠2 */
+  init_jianxia2_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* QQ Car飞车 */
+  init_qq_car_dissector(ndpi_struct, &a, detection_bitmask);
+  
+  /* 终结者2 */
+  init_terminator_dissector(ndpi_struct, &a, detection_bitmask);
   
   /* STARCRAFT */
   init_starcraft_dissector(ndpi_struct, &a, detection_bitmask);

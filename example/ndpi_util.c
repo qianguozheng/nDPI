@@ -272,7 +272,6 @@ static void patchIPv6Address(char *str) {
 }
 
 /* ***************************************************** */
-
 static struct ndpi_flow_info *get_ndpi_flow_info(struct ndpi_workflow * workflow,
 						 const u_int8_t version,
 						 u_int16_t vlan_id,
@@ -440,7 +439,6 @@ static struct ndpi_flow_info *get_ndpi_flow_info(struct ndpi_workflow * workflow
       workflow->stats.ndpi_flow_count++;
 
       *src = newflow->src_id, *dst = newflow->dst_id;
-
       return newflow;
     }
   } else {

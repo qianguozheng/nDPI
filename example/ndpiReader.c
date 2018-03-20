@@ -1553,7 +1553,6 @@ static void node_idle_scan_walker(const void *node, ndpi_VISIT which, int depth,
 
   if((which == ndpi_preorder) || (which == ndpi_leaf)) { /* Avoid walking the same node multiple times */
     if(flow->last_seen + MAX_IDLE_TIME < ndpi_thread_info[thread_id].workflow->last_time) {
-
       /* update stats */
       node_proto_guess_walker(node, which, depth, user_data);
 

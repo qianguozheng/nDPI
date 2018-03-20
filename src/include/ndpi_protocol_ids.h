@@ -350,10 +350,23 @@
 #define NDPI_PROTOCOL_SHUAITU              297 /* 率土之滨 */
 #define NDPI_PROTOCOL_DAHUA_XIYOU          298 /* 大话西游 */
 #define NDPI_PROTOCOL_DREAM_XIYOU          299 /* 梦幻西游 */
-#define NDPI_PROTOCOL_JIANXIA              300 /* 剑侠世界2 */
+#define NDPI_PROTOCOL_JIANXIA              300 /* 剑侠世界2 2018-3-20*/ 
 #define NDPI_PROTOCOL_SMALL_SANGUO         301 /* 少年三国志 */
 #define NDPI_PROTOCOL_BOKE_FISH            302 /* 波克捕鱼 */
 #define NDPI_PROTOCOL_TANK                 303 /* 坦克前线-帝国OL*/
+
+//2018-3-19
+#define NDPI_PROTOCOL_CTRIP                304 /* 携程旅游 */
+#define NDPI_PROTOCOL_QU_TOUTIAO           305 /* 趣头条 */
+#define NDPI_PROTOCOL_TAO_TOUTIAO          306 /* 淘头条 */
+#define NDPI_PROTOCOL_TAOPIAOPIAO          307 /* 青蛙旅行  udp 19000*/
+#define NDPI_PROTOCOL_LIZHI_FM             308 /* 荔枝FM */
+#define NDPI_PROTOCOL_XIANYU               309 /* 闲鱼 */
+
+//2018-3-20
+#define NDPI_PROTOCOL_QQ_CAR               310
+#define NDPI_PROTOCOL_TERMINATOR           311
+
 
 /** 集团公司，域名交叉互用，导致一些应用无法统计准确。
  
@@ -369,7 +382,7 @@
 
 
 /* UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE */
-#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_TANK
+#define NDPI_LAST_IMPLEMENTED_PROTOCOL              NDPI_PROTOCOL_TERMINATOR
 
 #define NDPI_MAX_SUPPORTED_PROTOCOLS                (NDPI_LAST_IMPLEMENTED_PROTOCOL + 1)
 #define NDPI_MAX_NUM_CUSTOM_PROTOCOLS               (NDPI_NUM_BITS-NDPI_LAST_IMPLEMENTED_PROTOCOL)

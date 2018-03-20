@@ -29,7 +29,7 @@ static void ndpi_search_tank_tcp(struct ndpi_detection_module_struct *ndpi_struc
 	struct ndpi_id_struct *src = flow->src;
 	struct ndpi_id_struct *dst = flow->dst;
 	
-	printf("%x, %x, %x, %x\n", buff[0], buff[1], buff[8], buff[9]);
+	//printf("%x, %x, %x, %x\n", buff[0], buff[1], buff[8], buff[9]);
 	if (packet->payload_packet_len < 10 ) return;
 
 	if (NDPI_SRC_HAS_PROTOCOL(src, NDPI_PROTOCOL_TANK) && NDPI_DST_HAS_PROTOCOL(dst, NDPI_PROTOCOL_TANK)) {
@@ -40,7 +40,7 @@ static void ndpi_search_tank_tcp(struct ndpi_detection_module_struct *ndpi_struc
 	
 	if (buff[0] == 0x0 && buff[1] == 0x28 && buff[8] == 0x0 && buff[9] == 0x20) {
 		flow->common.ensured_pkts++;
-		printf("flow->common.ensured_pkts=%d\n", flow->common.ensured_pkts);
+		//printf("flow->common.ensured_pkts=%d\n", flow->common.ensured_pkts);
 		if (flow->common.ensured_pkts < WZRY_ENSRUED2_MAX) return;
 		ndpi_set_detected_protocol(ndpi_struct, flow, NDPI_PROTOCOL_TANK, NDPI_PROTOCOL_UNKNOWN);
 		return;

@@ -8393,6 +8393,9 @@ ndpi_protocol_match host_match[] = {
   { ".alipayobjects.com", NULL, NULL,        "AliPay",          NDPI_PROTOCOL_ALIPAY, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { ".taobao.com", NULL, NULL,               "Taobao",          NDPI_PROTOCOL_TAOBAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { ".tmall.com", NULL, NULL,                "Tmall",           NDPI_PROTOCOL_TMALL, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { ".2.taobao.com", NULL, NULL,             "XianYu",          NDPI_PROTOCOL_XIANYU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "dianying.taobao.com", NULL, NULL,       "TaoPiaoPiao",     NDPI_PROTOCOL_TAOPIAOPIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+
   { ".igetget.com", NULL, NULL,              "DeDao",           NDPI_PROTOCOL_DEDAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { ".zhihu.com", NULL, NULL,                "ZhiHu",           NDPI_PROTOCOL_ZHIHU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
@@ -8529,8 +8532,19 @@ ndpi_protocol_match host_match[] = {
   { "ykimg.com", NULL, NULL,              "YouKu",              NDPI_PROTOCOL_YOUKU, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
   { ".cibntv.", NULL, NULL,               "CIBNTV",             NDPI_PROTOCOL_CIBNTV, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "ctrip.com", NULL, NULL,              "CTRIP",              NDPI_PROTOCOL_CTRIP, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
-
+  { "aiclk.com", NULL, NULL,              "QuTouTiao",          NDPI_PROTOCOL_QU_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "1sapp.com", NULL, NULL,              "QuTouTiao",          NDPI_PROTOCOL_QU_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "qktoutiao.com", NULL, NULL,          "QuTouTiao",          NDPI_PROTOCOL_QU_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "longyunad.com", NULL, NULL,          "TaoTouTiao",         NDPI_PROTOCOL_TAO_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "taotoutiao.net", NULL, NULL,         "TaoTouTiao",         NDPI_PROTOCOL_TAO_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "taola123.com", NULL, NULL,           "TaoTouTiao",         NDPI_PROTOCOL_TAO_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
+  { "lizhi.fm", NULL, NULL,               "LiZhiFM",            NDPI_PROTOCOL_LIZHI_FM, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "gzlzfm.com", NULL, NULL,             "LiZhiFM",            NDPI_PROTOCOL_LIZHI_FM, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  
   { "dnscrypt.org", NULL, NULL,             "DNScrypt",         NDPI_PROTOCOL_DNSCRYPT, NDPI_PROTOCOL_CATEGORY_NETWORK, NDPI_PROTOCOL_ACCEPTABLE },
 
   { "torrent.", NULL, NULL,                 "BitTorrent",       NDPI_PROTOCOL_BITTORRENT, NDPI_PROTOCOL_CATEGORY_DOWNLOAD_FT, NDPI_PROTOCOL_UNSAFE },
@@ -8651,6 +8665,7 @@ ndpi_protocol_match uri_match[] = {
   { "huajiao",              NULL, NULL,  "HuaJiao",           NDPI_PROTOCOL_HUAJIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { "xiami",                NULL, NULL,  "Xiami",             NDPI_PROTOCOL_XIAMI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   { "miaopai",              NULL, NULL,  "MiaoPai",           NDPI_PROTOCOL_MIAOPAI, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
+  { "taotoutiao",           NULL, NULL,  "TaoTouTiao",        NDPI_PROTOCOL_TAO_TOUTIAO, NDPI_PROTOCOL_CATEGORY_MEDIA, NDPI_PROTOCOL_FUN },
   
   { NULL, NULL, NULL, 0 }
 };

@@ -33,7 +33,7 @@ static void ndpi_search_boke_fish_tcp(struct ndpi_detection_module_struct *ndpi_
 	struct ndpi_id_struct *src = flow->src;
 	struct ndpi_id_struct *dst = flow->dst;
 	
-	printf("[%x %x %x]\n", buff[0], buff[1], buff[2]);
+	//printf("[%x %x %x]\n", buff[0], buff[1], buff[2]);
 	if (packet->payload_packet_len < 6 ) return;
 
 	if (NDPI_SRC_HAS_PROTOCOL(src, NDPI_PROTOCOL_BOKE_FISH) && NDPI_DST_HAS_PROTOCOL(dst, NDPI_PROTOCOL_BOKE_FISH)) {

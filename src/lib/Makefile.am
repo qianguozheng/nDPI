@@ -180,6 +180,9 @@ libndpi_la_SOURCES = ndpi_content_match.c.inc \
 		     protocols/poker_fish.c \
 		     protocols/dream_xiyou.c \
 		     protocols/dahua_xiyou.c \
+		     protocols/jianxia2.c \
+		     protocols/qq_car.c \
+		     protocols/netease_terminator.c \
 		     third_party/include/actypes.h \
 		     third_party/include/ahocorasick.h \
 		     third_party/include/ndpi_patricia.h \
